@@ -136,7 +136,7 @@ if (!isset($_SESSION)) {
         echo '<br><img class="rounded mx-auto d-block" src ="assets/avatar_click.svg" width="300vh" height="300vh">',
         "<br><h2 class='text-center'>Faça <a href='login.php' style='color: #FF5402'>Login</a> para divulgar um evento</h2><br>";
     ?>
-        <div class="d-flex justify-content-center">
+        <div class="d-flex justify-content-center pb-5">
             <a class="btn btn-lg text-white" style="padding-left: 2.5rem; padding-right: 2.5rem;background-color:#FF5402" href="login.php" role="button">Fazer login</a>
         </div>
     <?php
