@@ -1,0 +1,177 @@
+/*resetando o documento*/
+
+* {
+    margin: 0;
+    padding: 0;
+    font-family: 'Open Sans', sans-serif;
+}
+
+html,
+body {
+    height: 100%;
+    background-color: #f5f5f5;
+}
+
+.clear {
+    clear: both;
+}
+
+/*cabeçalho da página*/
+
+#barraPesquisa {
+    width: 100%;
+    height: 45px;
+    background-color: #FFF;
+    border-style: none;
+    border-bottom: 1px solid #000;
+    font-family: 'Open Sans', sans-serif;
+    color: #000;
+    font-size: 15px;
+    background-image: url(../assets/search_FILL0_wght400_GRAD0_opsz48.svg);
+    background-repeat: no-repeat;
+    background-position-x: left;
+    background-position-y: center;
+    padding-left: 50px;
+}
+
+#barraPesquisa:focus {
+    outline: none;
+    border: #fc5b20;
+}
+
+header>div>form>button:hover {
+    cursor: pointer;
+}
+
+header>div>a>img {
+    height: 5em;
+}
+
+header>div>#ops>ul {
+    width: 100%;
+    display: flex;
+    justify-content: end;
+    margin: 0;
+}
+
+header>div>#ops>ul>li {
+    display: inline-block;
+    padding-inline: 2.5vh;
+    font-family: 'Open Sans', sans-serif;
+    font-size: 18px;
+}
+
+header>div>#ops>ul>li>a {
+    color: #000000;
+    text-decoration: none;
+    transition: 0.1s;
+}
+
+header>div>#ops>ul>li>a:hover {
+    color: #000000;
+    text-decoration: underline;
+    transition: 0.1s;
+}
+
+/*mobile*/
+header>div>#mobile {
+    display: none;
+}
+
+header>div>#mobile>ul {
+    display: none;
+    position: absolute;
+    background-color: #ffffff;
+    top: 60px;
+    right: 5px;
+    border: 1px solid black;
+    list-style: none;
+    width: auto;
+    padding-left: 0;
+}
+
+header>div>#mobile>ul a {
+    text-decoration: none;
+}
+
+header>div>#mobile>ul li {
+    font-size: 10px;
+    list-style: none;
+    color: black;
+    border-bottom: 1px solid black;
+}
+
+header>div>#mobile>#search {
+    display: none;
+}
+
+header>div>#mobileSearch {
+    display: none;
+}
+
+header>form#mobile>input {
+    display: none;
+}
+
+@media only screen and (max-width: 1100px) {
+
+    header>div>#ops>ul {
+        display: none;
+    }
+
+    header>div>#mobile {
+        display: block;
+    }
+
+    header>#opsMobile>ul {
+        position: absolute;
+        top: 100px;
+        background-color: gray;
+        border: solid 0.1vh black;
+        list-style: none;
+    }
+
+    #desktop {
+        width: 100vh;
+    }
+
+    header>div>#mobile {
+        display: flex;
+    }
+
+}
+
+@media only screen and (max-width: 540px) {
+    header>div>#mobile>#search {
+        display: block;
+    }
+
+    header>div>#desktop {
+        display: none;
+    }
+
+    #barraPesquisa {
+        border-bottom: none;
+    }
+
+    header>div>a>img {
+        height: 3em;
+    }
+}
+
+#userUl {
+    display: none;
+    position: absolute;
+    background-color: #ffffff;
+    top: 100px;
+    right: 5px;
+    border: 1px solid black;
+    list-style: none;
+    width: 15%;
+    padding-left: 0;
+}
+
+#userUl > a > li {
+    border-bottom: 1px solid black;
+    width: 100%;
+}

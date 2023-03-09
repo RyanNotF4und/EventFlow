@@ -1,0 +1,63 @@
+.margin-top-bottom {
+    margin-top: 5vh;
+    margin-bottom: 5vh;
+}
+
+.margin-inline {
+    margin-inline: 5vh;
+}
+
+.padding {
+    padding: 10px;
+}
+
+section>form>table td {
+    padding: 10px;
+}
+
+.carousel {
+    border-width: 4px;
+    border-style: solid;
+    border-image: linear-gradient(to right, darkblue, darkorchid) 1;
+    width: 1000px;
+    height: 450px;
+}
+
+.carousel h5 {
+    text-shadow: 2px 0 #000, -2px 0 #000, 0 2px #000, 0 -2px #000,
+        1px 1px #000, -1px -1px #000, 1px -1px #000, -1px 1px #000;
+}
+
+.carousel p {
+    text-shadow: 2px 0 #000, -2px 0 #000, 0 2px #000, 0 -2px #000,
+        1px 1px #000, -1px -1px #000, 1px -1px #000, -1px 1px #000;
+}
+
+h1 {
+    width: 44.3ch;
+}
+
+.background {
+    height: 440px;
+}
+
+.cardImg {
+    max-width: 30vh;
+}
+
+
+@media only screen and (max-width: 600px) {
+
+    .carousel {
+        width: 100%;
+        height: 200px;
+    }
+
+    .background {
+        height: 190px;
+    }
+
+    h1 {
+        width: 100vh;
+    }
+}
