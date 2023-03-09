@@ -16,9 +16,14 @@ if (!isset($_SESSION)) {
 </head>
 
 <style>
+    section {
+        margin-inline: 5vh;
+        margin-top: 5vh;
+        margin-bottom: 5vh;
+    }
     @media screen and (max-width:900px) {
         h4 {
-            font-size: 2vw;
+            font-size: 3vw;
         }
 
         .form-control-lg {
@@ -30,6 +35,11 @@ if (!isset($_SESSION)) {
 
         #botao {
             width: 5vw;
+        }
+
+        section {
+            margin: 0;
+            padding: 0;
         }
     }
 </style>
@@ -48,17 +58,13 @@ if (!isset($_SESSION)) {
         $user = $select->selectUserById($_SESSION['id']);
         $ImgPerfil = "<div id='user' style='cursor:pointer;'><img src=" . $user['ImgPerfil'] . "></div>";
     ?>
-        <section class="margin-inline margin-top-bottom">
-            <h1>Divulgar um evento</h1>
-            <p>Com a Event Flow é extremamente simples criar e divulgar seus eventos !<br>Preencha o que se pede e seu evento estará visivel para milhares de pessoas !</p>
-            <span class="text-warning">*Será feito uma verificação antes de ser lançado*</span>
-            <span class='text-warning'><?php if (isset($_SESSION['msg'])) {
-                                            echo $_SESSION['msg'];
-                                            unset($_SESSION['msg']);
-                                        } else {
-                                            echo @$upload_event->error;
-                                        } ?></span>
-            <form action="" method="POST" enctype="multipart/form-data" class="border border-black w-100 border-0">
+        <section>
+            <h1 style="width:100%;font-size:3.5vw">Divulgar um evento</h1>
+            <p style="font-size:1.5vw">Com a Event Flow é extremamente simples criar e divulgar seus eventos !<br>Preencha o que se pede e seu evento estará visivel para milhares de pessoas !</p>
+            <span class="text-warning" style="font-size:1.5vw";>*Será feito uma verificação antes de ser lançado*</span>
+            <span class='text-warning'><?php if (isset($_SESSION['msg'])) {echo $_SESSION['msg'];unset($_SESSION['msg']);} else {echo @$upload_event->error;} ?></span>
+            <hr>
+            <form action="" method="POST" enctype="multipart/form-data" class="border border-black w-100 border-0 margin-top-bottom">
                 <table class="align-middle table w-100">
                     <tr>
                         <td colspan="3" class="border-0">
@@ -122,6 +128,7 @@ if (!isset($_SESSION)) {
                     <a href="index.php"><img src="assets/red-x-icon.svg" alt="" srcset="" id="botao"></a>
                 </div>
             </form>
+            <hr>
         </section>
     <?php
     } else {

@@ -33,31 +33,25 @@ section>form>table td {
         1px 1px #000, -1px -1px #000, 1px -1px #000, -1px 1px #000;
 }
 
-h1 {
-    width: 44.3ch;
+#card {
+    width:32vw;
+    height:22vw;
 }
 
-.background {
-    height: 440px;
+.card-body {
+    font-size: 2vw;
 }
 
-.cardImg {
-    max-width: 30vh;
-}
+@media only screen and (min-width: 600px) {
 
+    .card-body {
+        margin-left: 3vw;
+    }
+}
 
 @media only screen and (max-width: 600px) {
-
-    .carousel {
+    #card {
         width: 100%;
-        height: 200px;
-    }
-
-    .background {
-        height: 190px;
-    }
-
-    h1 {
-        width: 100vh;
+        height: 40vw;
     }
 }

@@ -1,39 +1,54 @@
 <?php
-if (!isset($_SESSION)) {
-    session_start();
-}
-include("php/user.inc.php");
-$select = new Select();
+    include("php/user.inc.php");
+    $select = new Select();
 
-if(isset($_SESSION["id"])) {
-    $user = $select->selectUserById($_SESSION['id']);
+    if (!isset($_SESSION)) {
+        //Se a sessão não existir, criar uma
+        session_start();
+    }
 
-    $ImgPerfil = "<div id='user' style='cursor:pointer;'><img src=".$user['ImgPerfil']."></div>";
-} else {
-    $ImgPerfil = '<a href="login.php"><img src="assets/user-128.svg"></a>';
-}
+    //Se o id de usuario existir
+    if(isset($_SESSION["id"])) {
+        //Selecionar usuario pelo id
+        $user = $select->selectUserById($_SESSION['id']);
+        //Setar icone do perfil
+        $ImgPerfil = "<div id='user' style='cursor:pointer;'><img src=".$user['ImgPerfil']." style='height:2vw'></div>";
+        $list = 
+        "<ul>
+            <a href='index.php?list'><li>Ver eventos</li></a>
+            <a href='upload.php'><li>Divulgar meu Evento</li></a>
+            <a href='#'><li>Configurações</li></a>
+            <a href='php/logout.inc.php' class='text-decoration-none text-black'><li>Sair</li></a>
+        </ul>";
+    } else {
+        //Setar icone de usuario nao logado
+        $ImgPerfil = '<a href="login.php"><img src="assets/user-128.svg" style="height:2vw"></a>';
+        $list = 
+        "<ul>
+            <a href='index.php?list'><li>Ver eventos</li></a>
+            <a href='upload.php'><li>Divulgar meu Evento</li></a>
+        </ul>";
+    }
 ?>
 
-<link rel="stylesheet" href="css/header.css">
-
 <header>
+
     <div class="navbar navbar-expand-lg navbar-light bg-white">
-        <a href="index.php" class="navbar-brand" style="margin-left:25px"><img src="assets/logo-transparente.png" alt="Logo"></a>
-        <form id="desktop" class="form-inline" style="width: 35vw">
-            <input type="text" name="" id="barraPesquisa" placeholder="Oque esta Procurando?">
+        <!--Logo-->
+        <a href="index.php" class="navbar-brand p-0 m-0"><img src="assets/logo-transparente.png" alt="logo" style="width:20vw"></a>
+        <!--Barra de Pesquisa-->
+        <form id="desktop" class="align-items-center w-50 ms-5 me-5 p-0 m-0" style="height:6vw">
+            <input type="text" name="" id="search_bar" placeholder="Procurar evento">
         </form>
+
         <div id="mobile" style="margin-right:20px;cursor:pointer">
             <img id="search" src="./assets/search_FILL0_wght400_GRAD0_opsz48.svg">
             <img id="menu" src="./assets/menu.svg" width="24px">
-            <ul>
-                <a href="index.php?list"><li>Ver eventos</li></a>
-                <a href="upload.php"><li>Divulgar meu Evento</li></a>
-                <a href="#"><li>Configurações</li></a>
-                <a href="php/logout.inc.php" class="text-decoration-none text-black"><li>Sair</li></a>
-            </ul>
+            <?php echo $list ?>
         </div>
-        <div id="ops" class="w-50 h-100 margin-bottom-0">
-            <ul class="h-100 align-items-center">
+
+        <div id="options_desktop" class="w-50" style="height:6vw">
+            <ul class="h-100 p-0 m-0 align-items-center justify-content-end d-flex w-100">
                 <li><a href="index.php?list">Ver eventos</a></li>
                 <li><a href="upload.php">Divulgar meu Evento</a></li>
                 <li><?php echo $ImgPerfil ?></li>
@@ -44,7 +59,10 @@ if(isset($_SESSION["id"])) {
             </ul>
         </div>
     </div>
+
     <form id="mobile" class="form-inline">
-        <input type="text" name="" id="barraPesquisa" placeholder="Oque esta Procurando?">
+        <input type="text" name="" id="mobile_search_bar" placeholder="Oque esta Procurando?">
     </form>
 </header>
+
+<div class="container-fluid" style="height:5vw;background-color:#dbdbdb"></div>

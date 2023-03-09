@@ -19,21 +19,11 @@ if(isset($_POST["submit"])) {
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <?php include("php/imports.inc.php"); ?>
     <title>Event Flow | Registrar</title>
-
-    <style>
-        @media screen and (max-width:600px) {
-            #bottom {
-                height: 30px;
-                bottom: 0;
-                font-size: 10px;
-            }
-        }
-    </style>
 </head>
 
-<body style="height:100vh">
-    <section class="w-100 h-100">
-        <div class="container-fluid quebra h-75">
+<body style="max-height:120vh">
+    <section class="h-100">
+        <div class="container-fluid h-100 pb-5 pt-1">
             <div class="row d-flex justify-content-center align-items-center h-100">
                 <div class="col-md-9 col-lg-6 col-xl-5">
                     <a href="index.php"><img src="assets/logo-transparente.png" class="img-fluid" alt="Logo"></a>
@@ -81,9 +71,9 @@ if(isset($_POST["submit"])) {
                 </div>
             </div>
         </div>
-        <div id="bottom" class="position-fixed w-100 bottom-0 d-flex flex-column flex-md-row text-center text-md-start justify-content-between py-2 px-2 px-xl-5" style="background-color:#FF5402">
+        <div class="position-absolute bottom-0 w-100 d-flex text-center text-md-start justify-content-between py-2 px-2 px-xl-5" style="background-color:#FF5402">
             <!-- Copyright -->
-            <div class="text-white mb-3 mb-md-0">
+            <div class="text-white w-100">
                 Copyright © 2023. Todos os direitos reservados.
             </div>
             <!-- Copyright -->

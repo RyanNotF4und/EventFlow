@@ -18,9 +18,60 @@ body {
 
 /*cabeçalho da página*/
 
-#barraPesquisa {
+header>div>#desktop {
+    display: flex;
+}
+
+header>div>form>#search_bar {
     width: 100%;
-    height: 45px;
+    height: 3vw;
+    background-color: #FFF;
+    border-style: none;
+    border-bottom: 1px solid #000;
+    font-family: 'Open Sans', sans-serif;
+    color: #000;
+    font-size: 1vw;
+    background-image: url(../assets/search_FILL0_wght400_GRAD0_opsz48.svg);
+    background-size: 3vw;
+    background-repeat: no-repeat;
+    background-position-x: left;
+    background-position-y: center;
+    padding-left: 50px;
+}
+
+header>div>form>#search_bar:focus {
+    outline: none;
+    border-bottom: 1px solid #fc5b20;
+}
+
+header>div>#options_desktop>ul>li {
+    display: inline-block;
+    padding-inline: 2.5vh;
+    font-family: 'Open Sans', sans-serif;
+    font-size: 1.125vw;
+}
+
+header>div>#options_desktop>ul>li>a {
+    color: #000000;
+    text-decoration: none;
+    transition: 0.1s;
+}
+
+header>div>#options_desktop>ul>li>a:hover {
+    color: #000000;
+    text-decoration: underline;
+    transition: 0.1s;
+}
+
+/*mobile*/
+header>div>#mobile {
+    display: none;
+}
+
+header>form>#mobile_search_bar {
+    display: none;
+    width: 100%;
+    height: 35px;
     background-color: #FFF;
     border-style: none;
     border-bottom: 1px solid #000;
@@ -34,48 +85,9 @@ body {
     padding-left: 50px;
 }
 
-#barraPesquisa:focus {
+header>form>#mobile_search_bar:focus{
     outline: none;
-    border: #fc5b20;
-}
-
-header>div>form>button:hover {
-    cursor: pointer;
-}
-
-header>div>a>img {
-    height: 5em;
-}
-
-header>div>#ops>ul {
-    width: 100%;
-    display: flex;
-    justify-content: end;
-    margin: 0;
-}
-
-header>div>#ops>ul>li {
-    display: inline-block;
-    padding-inline: 2.5vh;
-    font-family: 'Open Sans', sans-serif;
-    font-size: 18px;
-}
-
-header>div>#ops>ul>li>a {
-    color: #000000;
-    text-decoration: none;
-    transition: 0.1s;
-}
-
-header>div>#ops>ul>li>a:hover {
-    color: #000000;
-    text-decoration: underline;
-    transition: 0.1s;
-}
-
-/*mobile*/
-header>div>#mobile {
-    display: none;
+    border-bottom: 1px solid #fc5b20;
 }
 
 header>div>#mobile>ul {
@@ -113,9 +125,9 @@ header>form#mobile>input {
     display: none;
 }
 
-@media only screen and (max-width: 1100px) {
+@media only screen and (max-width: 990px) {
 
-    header>div>#ops>ul {
+    header>div>#options_desktop {
         display: none;
     }
 
@@ -141,7 +153,7 @@ header>form#mobile>input {
 
 }
 
-@media only screen and (max-width: 540px) {
+@media only screen and (max-width: 550px) {
     header>div>#mobile>#search {
         display: block;
     }
@@ -150,12 +162,8 @@ header>form#mobile>input {
         display: none;
     }
 
-    #barraPesquisa {
+    #search_bar {
         border-bottom: none;
-    }
-
-    header>div>a>img {
-        height: 3em;
     }
 }
 
