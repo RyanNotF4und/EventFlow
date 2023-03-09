@@ -62,7 +62,7 @@ if (!isset($_SESSION)) {
                 <table class="align-middle table w-100">
                     <tr>
                         <td colspan="3" class="border-0">
-                            <h4>Escolha uma imagem para ser capa do seu evento</h6>
+                            <h4>Escolh uma imagem para ser capa do seu evento</h6>
                         <td colspan="100" class="border-0"><input class="form-control form-control-lg" type="file" name="image" accept="image/*" required /></td>
                         </div>
                         </td>
