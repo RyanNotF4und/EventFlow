@@ -2,7 +2,6 @@
 class User extends db
 {
     public $user_id;
-    public $error;
 
     public function idUser()
     {
@@ -13,7 +12,9 @@ class User extends db
     {
         $duplicate = $this->connect()->query("SELECT * FROM users WHERE uname = '$uname' OR email = '$email'");
         if (mysqli_num_rows($duplicate) > 0) {
-            return $this->error = '<div class="alert alert-danger" role="alert">Email ou Nome de Usuário já existentes!</div>';
+            $_SESSION['msg'] = '<div class="alert alert-danger rounded-0" role="alert">Usuário já existente!</div>';
+            header("Location: register.php");
+            exit();
         } else {
             if ($psw == $confirm_psw) {
                 $query = "INSERT INTO users VALUES('0','$email','$uname','$psw','assets/user-128.svg')";
@@ -22,7 +23,9 @@ class User extends db
                 header("Location: login.php");
                 exit();
             } else {
-                return $this->error = '<div class="alert alert-danger" role="alert">As senhas não coincidem!</div>';
+                $_SESSION['msg'] = '<div class="alert alert-danger rounded-0" role="alert">As senhas não coincidem!</div>';
+                header("Location: register.php");
+                exit();
             }
         }
     }
@@ -40,10 +43,14 @@ class User extends db
                 }
                 return 1;
             } else {
-                return $this->error = '<div class="alert alert-danger" role="alert">Senha incorreta!</div>';
+                $_SESSION['msg'] = '<div class="alert alert-danger rounded-0" role="alert">Senha incorreta!</div>';
+                header("Location: login.php");
+                exit();
             }
         } else {
-            return $this->error = '<div class="alert alert-danger" role="alert">Usuário não registrado!</div>';
+            $_SESSION['msg'] = '<div class="alert alert-danger rounded-0" role="alert">Usuário não registrado!</div>';
+                header("Location: login.php");
+                exit();
         }
     }
 }

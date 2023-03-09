@@ -1,4 +1,9 @@
 <?php
+if (!isset($_SESSION)) {
+    //Se a sessão não existir, criar uma
+    session_start();
+}
+
 include("php/db.inc.php");
 include("php/user.inc.php");
 
@@ -33,6 +38,9 @@ if(isset($_POST["submit"])) {
             <div class="row d-flex justify-content-center align-items-center h-100">
                 <div class="col-md-9 col-lg-6 col-xl-5">
                     <a href="index.php"><img src="assets/logo-transparente.png" class="img-fluid" alt="Logo"></a>
+                    <div class="form-outline mb-3">
+                        <span class='text-warning'><?php if (isset($_SESSION['msg'])) { echo $_SESSION['msg'];unset($_SESSION['msg']) ;}?></span>
+                    </div>
                 </div>
                 <div class="col-md-8 col-lg-6 col-xl-4 offset-xl-1 border border-black rounded">
                     <form class="padding" method="POST">
@@ -76,10 +84,6 @@ if(isset($_POST["submit"])) {
                                 </label>
                             </div>
                             <a href="#!" class="text-body">Esqueceu sua senha?</a>
-                        </div>
-
-                        <div class="form-outline mb-3">
-                            <span class='text-warning'><?php if (isset($_SESSION['msg'])) { echo $_SESSION['msg'];unset($_SESSION['msg']) ;} else { echo @$login->error ;}?></span>
                         </div>
 
                         <div class="text-center text-lg-start mt-4 pt-2">
