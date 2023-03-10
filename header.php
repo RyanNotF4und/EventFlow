@@ -63,5 +63,6 @@
 
     <form id="mobile" class="form-inline">
         <input type="text" name="" id="mobile_search_bar" placeholder="Oque esta Procurando?">
+        <img src="assets/close_FILL0_wght400_GRAD0_opsz20.svg" id="close" alt="" style="cursor:pointer">
     </form>
 </header>
