@@ -22,6 +22,7 @@ header>div>#desktop {
     display: flex;
 }
 
+
 header>div>form>#search_bar {
     width: 100%;
     height: 3vw;
@@ -95,22 +96,13 @@ header>div>#mobile>ul {
     position: absolute;
     background-color: #ffffff;
     top: 60px;
-    right: 5px;
-    border: 1px solid black;
-    list-style: none;
-    width: auto;
-    padding-left: 0;
+    right: 5px; 
+    font-size: 2vh;
+    z-index: 1;
 }
 
 header>div>#mobile>ul a {
     text-decoration: none;
-}
-
-header>div>#mobile>ul li {
-    font-size: 10px;
-    list-style: none;
-    color: black;
-    border-bottom: 1px solid black;
 }
 
 header>div>#mobile>#search {
@@ -171,15 +163,8 @@ header>form#mobile>input {
     display: none;
     position: absolute;
     background-color: #ffffff;
-    top: 100px;
+    top: 90%;
     right: 5px;
-    border: 1px solid black;
-    list-style: none;
-    width: 15%;
-    padding-left: 0;
-}
-
-#userUl > a > li {
-    border-bottom: 1px solid black;
-    width: 100%;
+    font-size: 2vh;
+    z-index: 1;
 }

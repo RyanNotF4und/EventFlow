@@ -10,7 +10,7 @@ class db
 	{
 		$this->host = "localhost";
 		$this->user = "root";
-		$this->password = "";
+		$this->password = "root";
 		$this->database = "event_flow";
 
 		$conn = new mysqli($this->host, $this->user, $this->password, $this->database);

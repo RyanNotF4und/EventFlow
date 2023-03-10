@@ -23,7 +23,7 @@ if (!isset($_SESSION)) {
     }
     @media screen and (max-width:900px) {
         h4 {
-            font-size: 3vw;
+            font-size: 2vw;
         }
 
         .form-control-lg {
@@ -44,7 +44,7 @@ if (!isset($_SESSION)) {
     }
 </style>
 
-<body>
+<body style="height:auto">
     <?php
     include("php/db.inc.php");
     include("header.php");
@@ -59,9 +59,9 @@ if (!isset($_SESSION)) {
         $ImgPerfil = "<div id='user' style='cursor:pointer;'><img src=" . $user['ImgPerfil'] . "></div>";
     ?>
         <section>
-            <h1 style="width:100%;font-size:3.5vw">Divulgar um evento</h1>
-            <p style="font-size:1.5vw">Com a Event Flow é extremamente simples criar e divulgar seus eventos !<br>Preencha o que se pede e seu evento estará visivel para milhares de pessoas !</p>
-            <span class="text-warning" style="font-size:1.5vw";>*Será feito uma verificação antes de ser lançado*</span>
+            <h1 style="width:100%;font-size:2.5vw">Divulgar um evento</h1>
+            <p style="font-size:1vw">Com a Event Flow é extremamente simples criar e divulgar seus eventos !<br>Preencha o que se pede e seu evento estará visivel para milhares de pessoas !</p>
+            <span class="text-warning" style="font-size:1vw";>*Será feito uma verificação antes de ser lançado*</span>
             <span class='text-warning'><?php if (isset($_SESSION['msg'])) {echo $_SESSION['msg'];unset($_SESSION['msg']);} else {echo @$upload_event->error;} ?></span>
             <hr>
             <form action="" method="POST" enctype="multipart/form-data" class="border border-black w-100 border-0 margin-top-bottom">

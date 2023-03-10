@@ -29,38 +29,7 @@ $events = new Events;
         echo $_SESSION['msg'];
         unset($_SESSION['msg']);
     }
-
-    if (isset($_GET['upload'])) {
     ?>
-        <h1>Cadastrar Evento</h1>
-
-        <form enctype="multipart/form-data" method="POST" autocomplete="off">
-
-            <p>
-                <label for="formThumb">Capa</label>
-                <input type="file" id="formThumb" name="img" accept="image/*">
-            </p>
-
-            <p>
-                <label for="formTitle">Titulo</label>
-                <input type="text" id="formTitle" name="title">
-            </p>
-
-            <p>
-                <label for="formTitle">Descrição</label>
-                <input type="text" id="formTitle" name="description">
-            </p>
-
-            <p>
-                <label for="formTitle">Data do evento</label>
-                <input type="text" id="formTitle" name="date_event">
-            </p>
-
-            <p>
-                <button type="submit"><img src="./assets/confirm-icon.svg" alt="Enviar"></button>
-            </p>
-        </form>
-
         <main>
             <h1>Gerenciamento dos Eventos</h1>
             <section>
@@ -68,9 +37,6 @@ $events = new Events;
                 <a href="panel.php?list">Listar</a>
             </section>
         </main>
-    <?php
-    }
-    ?>
 </body>
 
 </html>

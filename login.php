@@ -45,7 +45,7 @@ if(isset($_POST["submit"])) {
                 <div class="col-md-8 col-lg-6 col-xl-4 offset-xl-1 border border-black rounded">
                     <form class="padding" method="POST">
                         <div class="d-flex flex-row align-items-center justify-content-center justify-content-lg-start">
-                            <p class="lead fw-normal mb-0 me-3">Fazera login com</p>
+                            <p class="lead fw-normal mb-0 me-3">Fazer login com</p>
                             <button type="button" class="btn btn-floating mx-1">
                                <img src="assets/facebook-icon.svg" alt="Facebook" srcset="">
                             </button>
