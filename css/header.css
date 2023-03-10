@@ -3,7 +3,7 @@
 * {
     margin: 0;
     padding: 0;
-    font-family: 'Open Sans', sans-serif;
+    font-family:"Open Sans";
 }
 
 html,
@@ -22,22 +22,22 @@ header>div>#desktop {
     display: flex;
 }
 
-
 header>div>form>#search_bar {
-    width: 100%;
+    width: 87%;
     height: 3vw;
     background-color: #FFF;
     border-style: none;
     border-bottom: 1px solid #000;
     font-family: 'Open Sans', sans-serif;
     color: #000;
-    font-size: 1vw;
+    font-size: 1.8vh;
     background-image: url(../assets/search_FILL0_wght400_GRAD0_opsz48.svg);
-    background-size: 3vw;
+    background-size: 5vh;
     background-repeat: no-repeat;
     background-position-x: left;
     background-position-y: center;
     padding-left: 50px;
+    transition: all .3s;
 }
 
 header>div>form>#search_bar:focus {
@@ -47,9 +47,11 @@ header>div>form>#search_bar:focus {
 
 header>div>#options_desktop>ul>li {
     display: inline-block;
-    padding-inline: 2.5vh;
+    padding-inline: 1.1vw;
     font-family: 'Open Sans', sans-serif;
-    font-size: 1.125vw;
+    font-weight: 600;
+    font-size: 1.8vh;
+    transition: all .8s;
 }
 
 header>div>#options_desktop>ul>li>a {
@@ -168,3 +170,4 @@ header>form#mobile>input {
     font-size: 2vh;
     z-index: 1;
 }
+

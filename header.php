@@ -12,7 +12,7 @@
         //Selecionar usuario pelo id
         $user = $select->selectUserById($_SESSION['id']);
         //Setar icone do perfil
-        $ImgPerfil = "<div id='user' style='cursor:pointer;'><img src=".$user['ImgPerfil']." style='height:3vw'><img src="."assets/coin-svgrepo-com.svg"." style='height:1.3vw;padding-inline:3px'>0</div>";
+        $ImgPerfil = "<div id='user' style='cursor:pointer;'><img src=".$user['ImgPerfil']." style='height:1.9vw'><img src="."assets/coin-svgrepo-com.svg"." style='height:1vw;padding-inline:3px'>0</div>";
         $list = 
         "<ul class='list-group'>
             <a href='index.php?list'><li class='list-group-item'>Ver eventos</li></a>
@@ -34,11 +34,11 @@
 
 <header>
 
-    <div class="navbar navbar-expand-lg navbar-light bg-white">
+    <div class="navbar navbar-expand-lg navbar-light bg-white w-95 m-0 mx-auto">
         <!--Logo-->
-        <a href="index.php" class="navbar-brand p-0 m-0"><img src="assets/logo-transparente.png" alt="logo" style="width:20vw"></a>
+        <a href="index.php" class="navbar-brand p-0 m-0"><img src="assets/logo-transparente.png" alt="logo" style="width:12vw; min-width:150px" ></a>
         <!--Barra de Pesquisa-->
-        <form id="desktop" class="align-items-center w-50 ms-5 me-5 p-0 m-0" style="height:6vw">
+        <form id="desktop" class="align-items-center ms-3 w-50 p-0 m-0" style="height:6vw">
             <input type="text" name="" id="search_bar" placeholder="Procurar evento">
         </form>
 

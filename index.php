@@ -78,7 +78,7 @@ $display = new Display();
 
     ?>
         <div class="margin-top-bottom">
-            <h1 class="text-black mx-auto w-50" style="font-size: 3.5vw;">Eventos em destaque</h1>
+            <h1 id="eventosD" class="text-black mx-auto w-50 margin-top-bottom">Eventos em destaque</h1>
             <div id="carouselExampleIndicators" class="carousel slide bg-black mx-auto" style="width:50vw; height:25vw">
                 <div class="carousel-indicators">
                     <button type="button" style="width:5vw" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
