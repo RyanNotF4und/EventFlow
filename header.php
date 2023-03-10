@@ -23,7 +23,7 @@
         </ul>";
     } else {
         //Setar icone de usuario nao logado
-        $ImgPerfil = '<a href="login.php"><img src="assets/user-128.svg" style="height:2vw"></a>';
+        $ImgPerfil = '<a href="login.php"><img src="assets/user-128.svg" style="height:3vw"></a>';
         $list = 
         "<ul>
             <a href='index.php?list'><li>Ver eventos</li></a>
