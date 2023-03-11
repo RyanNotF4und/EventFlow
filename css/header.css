@@ -132,6 +132,12 @@ header>form#mobile>input {
     left: 80vw;
 }
 
+#localizacao {
+    width: 20vw;
+    font-size: 12px;
+    cursor:pointer
+}
+
 @media only screen and (max-width: 990px) {
 
     header>div>#options_desktop {
@@ -158,6 +164,11 @@ header>form#mobile>input {
         display: flex;
     }
 
+    #localizacao {
+        width: 12%;
+        font-size: 10px;
+    }
+
 }
 
 @media only screen and (max-width: 550px) {
@@ -171,6 +182,11 @@ header>form#mobile>input {
 
     #search_bar {
         border-bottom: none;
+    }
+
+    #localizacao {
+        width: 120px;
+        font-size: auto;
     }
 }
 
