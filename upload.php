@@ -11,7 +11,10 @@ if (!isset($_SESSION)) {
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <?php include("php/imports.inc.php"); ?>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js" integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN" crossorigin="anonymous"></script>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
+    <link rel="stylesheet" href="css/index.css">
+    <link rel="icon" href="assets/favicon.png">
     <title>Event Flow | Divulgar meu evento</title>
 </head>
 
@@ -23,14 +26,18 @@ if (!isset($_SESSION)) {
     }
     @media screen and (max-width:900px) {
         h4 {
-            font-size: 2vw;
+            font-size: 12px;
         }
 
         .form-control-lg {
             min-height: calc(0.5em + 1rem + calc(var(--bs-border-width) * 2));
             padding: 0.5rem 1rem;
-            font-size: 1vw;
+            font-size: 10px;
             border-radius: 0.5rem;
+        }
+
+        #file {
+            width: 120px;
         }
 
         #botao {
@@ -58,18 +65,18 @@ if (!isset($_SESSION)) {
         $user = $select->selectUserById($_SESSION['id']);
         $ImgPerfil = "<div id='user' style='cursor:pointer;'><img src=" . $user['ImgPerfil'] . "></div>";
     ?>
-        <section>
-            <h1 style="width:100%;font-size:2.5vw">Divulgar um evento</h1>
-            <p style="font-size:1vw">Com a Event Flow é extremamente simples criar e divulgar seus eventos !<br>Preencha o que se pede e seu evento estará visivel para milhares de pessoas !</p>
-            <span class="text-warning" style="font-size:1vw";>*Será feito uma verificação antes de ser lançado*</span>
+        <section class="p-1">
+            <h1 style="width:100%;font-size:24px;font-weight:bolder">Divulgar um evento</h1>
+            <p style="font-size:12px">Com a Event Flow é extremamente simples criar e divulgar seus eventos !<br>Preencha o que se pede e seu evento estará visivel para milhares de pessoas !</p>
+            <span class="text-warning" style="font-size:12px";>*Será feito uma verificação antes de ser lançado*</span>
             <span class='text-warning'><?php if (isset($_SESSION['msg'])) {echo $_SESSION['msg'];unset($_SESSION['msg']);} else {echo @$upload_event->error;} ?></span>
             <hr>
-            <form action="" method="POST" enctype="multipart/form-data" class="border border-black w-100 border-0 margin-top-bottom">
+            <form method="POST" enctype="multipart/form-data" class="border border-black w-100 border-0 margin-top-bottom">
                 <table class="align-middle table w-100">
                     <tr>
                         <td colspan="3" class="border-0">
-                            <h4>Escolha uma imagem para ser capa do seu evento</h6>
-                        <td colspan="100" class="border-0"><input class="form-control form-control-lg" type="file" name="image" accept="image/*" required /></td>
+                            <h4>Escolha uma imagem para ser capa do seu evento</h4>
+                        <td colspan="100" class="border-0"><input id="file" class="form-control form-control-lg" type="file" name="image" accept="image/*" required /></td>
                         </div>
                         </td>
                     </tr>

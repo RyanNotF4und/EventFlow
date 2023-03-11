@@ -15,7 +15,10 @@ $display = new Display();
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <?php include("php/imports.inc.php"); ?>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js" integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN" crossorigin="anonymous"></script>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
+    <link rel="stylesheet" href="css/index.css">
+    <link rel="icon" href="assets/favicon.png">
     <title>Event Flow | Inicio</title>
 </head>
 
@@ -26,52 +29,30 @@ $display = new Display();
         $events->openEvent();
     } else if (isset($_GET['list'])) {
     ?>
-        <div class="container margin-top-bottom">
-            <?php
-            $i = 0;
-            $event = $display->displayAll();
-            if ($event) {
-                foreach ($event as $data) {
-                    $i++;
-                    if ($i % 2 != 0) {
-            ?>
-                        <div class="row w-100">
-                            <div class="col-sm m-3">
-                                <a class="text-decoration-none text-reset" href="?event=<?php echo $data['id'] ?>">
-                                    <div id="card" class="mx-auto rounded mt-2 mb-2" style="background: url(<?php echo $data['thumb_path'] ?>) no-repeat center;background-size:cover;" ></div>
-                                </a>
-                                <div class="card-body">
-                                    <h3 class="fw-bold"><?php echo $data['title'] ?></h3>
-                                    <p><?php echo $data['description'] ?></p>
-                                    <p>Estado: <?php echo $data['state'] ?></p>
-                                    <p>Cidade: <?php echo $data['city'] ?></p>
-                                    <p>Data do evento: <?php echo $data['date_event'] ?></p>
-                                </div>
-                            </div>
-
-                        <?php
-                    } else {
-                        ?>
-                            <div class="col-sm m-3">
-                                <a class="text-decoration-none text-reset" href="?event=<?php echo $data['id'] ?>">
-                                    <div id="card" class="card mx-auto rounded mt-2 mb-2" style="background: url(<?php echo $data['thumb_path'] ?>) no-repeat center;background-size:cover;"></div>
-                                </a>
-                                <div class="card-body">
-                                    <h3 class="fw-bold"><?php echo $data['title'] ?></h3>
-                                    <p><?php echo $data['description'] ?></p>
-                                    <p>Estado: <?php echo $data['state'] ?></p>
-                                    <p>Cidade: <?php echo $data['city'] ?></p>
-                                    <p>Data do evento: <?php echo $data['date_event'] ?></p>
-                                </div>
-                            </div>
-                        </div>
+        <div id="container">
+            <main>
+                <div class="thumbnail-container">
                     <?php
+                    $event = $display->displayAll();
+                    if ($event) {
+                        foreach ($event as $data) {
+                    ?>
+                            <a class="text-decoration-none text-reset" href="?event=<?php echo $data['id'] ?>">
+                                <article class="thumbnail-preview ms-2 me-2 ">
+                                    <div id="card" class="rounded" style="background: url(<?php echo $data['thumb_path'] ?>) no-repeat center;background-size:cover;height:200px"></div>
+                                    <h3 class="fw-bold"><?php echo $data['title'] ?></h3>
+                                    <p><?php echo $data['description'] ?></p>
+                                    <p>Estado: <?php echo $data['state'] ?></p>
+                                    <p>Cidade: <?php echo $data['city'] ?></p>
+                                    <p>Data do evento: <?php echo $data['date_event'] ?></p>
+                                </article>
+                            </a>
+                    <?php
+                        }
                     }
                     ?>
-            <?php
-                }
-            }
-            ?>
+                </div>
+            </main>
         </div>
     <?php
     } else {
@@ -124,29 +105,30 @@ $display = new Display();
 
         <h1 class="text-black margin-top-bottom ps-3" style="width: 95vw;">Eventos e shows</h1>
 
-        <div class="card-group">
-            <?php
-            $event = $display->highLights();
-            if ($event) {
-                foreach ($event as $data) {
-            ?>
-                    <div class="col-sm m-1">
+        <main>
+            <div class="thumbnail-container-highlight ps-3">
+                <?php
+                $event = $display->highLights();
+                if ($event) {
+                    foreach ($event as $data) {
+                ?>
                         <a class="text-decoration-none text-reset" href="?event=<?php echo $data['id'] ?>">
-                            <div style="background: url(<?php echo $data['thumb_path'] ?>) no-repeat center;background-size:cover;width:350px;height:200px" class="ms-3 rounded mt-2 mb-2"></div>
+                            <article class="thumbnail-preview ms-2 me-5 ">
+                                <div id="card" class="rounded" style="background: url(<?php echo $data['thumb_path'] ?>) no-repeat center;background-size:cover;height:200px"></div>
+                                <h3 class="fw-bold"><?php echo $data['title'] ?></h3>
+                                <p><?php echo $data['description'] ?></p>
+                                <p>Estado: <?php echo $data['state'] ?></p>
+                                <p>Cidade: <?php echo $data['city'] ?></p>
+                                <p>Data do evento: <?php echo $data['date_event'] ?></p>
+                            </article>
                         </a>
-                        <div class="card-body ms-3">
-                            <h5 class="ml-2 mx-auto d-flex fw-bold"><?php echo $data['title'] ?></h5>
-                            <p class="mx-auto d-flex"><?php echo $data['description'] ?></p>
-                            <p class="mx-auto d-flex">Estado: <?php echo $data['state'] ?></p>
-                            <p class="mx-auto d-flex">Cidade: <?php echo $data['city'] ?></p>
-                            <p>Data do evento: <?php echo $data['date_event'] ?></p>
-                        </div>
-                    </div>
-            <?php
+                <?php
+                    }
                 }
-            }
-            ?>
-        </div>
+                ?>
+            </div>
+        </main>
+
 
         <a href="?list"><button class="btn border-0 ms-2">Ver mais</button></a>
 

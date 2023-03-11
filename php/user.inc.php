@@ -63,4 +63,14 @@ class Select extends db
         $result = $this->connect()->query("SELECT * FROM users WHERE id = '$user_id'");
         return mysqli_fetch_assoc($result);
     }
+
+    public function displayUserEvents($user_id)
+    {
+        $result = $this->connect()->query("SELECT * FROM events WHERE user_id = '$user_id'");
+        if($result->num_rows > 0) {
+            return $result;
+        } else {
+            return false;
+        }
+    }
 }

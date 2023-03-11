@@ -23,8 +23,9 @@ header>div>#desktop {
 }
 
 header>div>form>#search_bar {
-    width: 87%;
-    height: 3vw;
+    width: 85%;
+    min-height: 35px;
+    max-height: 35px;
     background-color: #FFF;
     border-style: none;
     border-bottom: 1px solid #000;
@@ -91,7 +92,6 @@ header>form>#mobile_search_bar {
 
 header>form>#mobile_search_bar:focus{
     outline: none;
-    border-bottom: 1px solid #fc5b20;
 }
 
 header>div>#mobile>ul {
@@ -119,15 +119,17 @@ header>div>#mobileSearch {
 header>form#mobile>input {
     display: none;
     position: absolute;
-    top: 3.4vh;
-    left: 34%;
+    top: 25px;
+    left: 40vw;
+    width: 45%;
+    padding-left: 40px;
 }
 
 #close{
     display: none;
     position: absolute;
-    top: 3.9vh;
-    left: 84%;
+    top: 30px;
+    left: 80vw;
 }
 
 @media only screen and (max-width: 990px) {

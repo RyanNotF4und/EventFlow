@@ -22,13 +22,18 @@ if(isset($_POST["submit"])) {
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <?php include("php/imports.inc.php"); ?>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js" integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN" crossorigin="anonymous"></script>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/header.css">
+    <link rel="stylesheet" href="css/index.css">
+    <link rel="icon" href="assets/favicon.png">
     <title>Event Flow | Registrar</title>
 </head>
 
-<body style="max-height:120vh">
+<body style="max-height:100vh">
     <section class="h-100">
-        <div class="container-fluid h-100 pb-5 pt-1">
+        <div class="container-fluid h-100">
             <div class="row d-flex justify-content-center align-items-center h-100">
                 <div class="col-md-9 col-lg-6 col-xl-5">
                     <a href="index.php"><img src="assets/logo-transparente.png" class="img-fluid" alt="Logo"></a>
@@ -74,30 +79,6 @@ if(isset($_POST["submit"])) {
                     </form>
                 </div>
             </div>
-        </div>
-        <div class="position-absolute bottom-0 w-100 d-flex text-center text-md-start justify-content-between py-2 px-2 px-xl-5" style="background-color:#FF5402">
-            <!-- Copyright -->
-            <div class="text-white w-100">
-                Copyright © 2023. Todos os direitos reservados.
-            </div>
-            <!-- Copyright -->
-
-            <!-- Right -->
-            <div>
-                <a href="#!" class="text-white me-4">
-                    <i class="fab fa-facebook-f"></i>
-                </a>
-                <a href="#!" class="text-white me-4">
-                    <i class="fab fa-twitter"></i>
-                </a>
-                <a href="#!" class="text-white me-4">
-                    <i class="fab fa-google"></i>
-                </a>
-                <a href="#!" class="text-white">
-                    <i class="fab fa-linkedin-in"></i>
-                </a>
-            </div>
-            <!-- Right -->
         </div>
     </section>
 

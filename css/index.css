@@ -33,11 +33,6 @@ section>form>table td {
         1px 1px #000, -1px -1px #000, 1px -1px #000, -1px 1px #000;
 }
 
-#card {
-    width:32vw;
-    height:22vw;
-}
-
 .card-body {
     font-size: 2vh;
 }
@@ -46,10 +41,63 @@ section>form>table td {
     font-size: 3vh;
 }
 
-#eventosD{
+#eventosD {
     font-size: 3vw;
     font-weight: 800;
 }
+
+
+#container {
+    width: 100%;
+    min-height: 100vh;
+    display: grid;
+    grid-gap: 0px;
+    grid-template-rows: max-content max-content max-content max-content auto max-content max-content auto max-content;
+}
+
+.thumbnail-container {
+    display: flex;
+    flex-wrap: wrap;
+    width: 100%;
+    justify-content: center;
+}
+
+.thumbnail-container-highlight {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: start;
+}
+
+.thumbnail-preview {
+    display: block;
+    width: 300px;
+    height: 400px;
+    margin-top: 20px;
+    align-items: center;
+    justify-content: center;
+}   
+
+#card {
+    max-width: 300px;
+    max-height: 300px;
+}
+
+#userCard {
+    max-width: 500px;
+    max-height: 500px;
+}
+
+@media only screen and (min-width: 851px) {
+    main {
+        grid-column: 2;
+        grid-row: 5;
+        margin-bottom: 20px;
+    }
+}
+
+
+
+
 @media only screen and (min-width: 600px) {
 
     .card-body {
@@ -62,7 +110,8 @@ section>form>table td {
         width: 100%;
         height: 40vw;
     }
-    #eventosD{
+
+    #eventosD {
         font-size: 2.8vh;
         margin-top: 2vh;
         margin-bottom: 2vh;
