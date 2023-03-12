@@ -1,5 +1,42 @@
 <?php
-include("php/db.inc.php");
+    include("php/db.inc.php");
+    include("php/events.inc.php");
+    include("php/display.inc.php");
+    include("php/user.inc.php");
+
+    $select = new Select();
+
+    if (!isset($_SESSION)) {
+        //Se a sessão não existir, criar uma
+        session_start();
+    }
+
+    //Se o id de usuario existir
+    if (isset($_SESSION["id"])) {
+        //Selecionar usuario pelo id
+        $user = $select->selectUserById($_SESSION['id']);
+        //Setar icone do perfil
+        $ImgPerfil = "<div id='user' style='cursor:pointer;'><img src=" . $user['ImgPerfil'] . " style='height:1.9vw'><img src=" . "assets/coin-svgrepo-com.svg" . " style='height:1vw;padding-inline:3px'>0</div>";
+        $list =
+            "<ul class='list-group'>
+                <a href='index.php?list'><li class='list-group-item'>Ver eventos</li></a>
+                <a href='upload.php'><li class='list-group-item'>Divulgar meu Evento</li></a>
+                <a href='user.php?perfil'><li class='list-group-item'>Configurações</li></a>
+                <a href='php/logout.inc.php' class='text-decoration-none text-black'><li class='list-group-item'>Sair</li></a>
+                <li class='list-group-item'><img src=" . "assets/coin-svgrepo-com.svg" . " style='height:1.3vw;padding-inline:3px'>0</li>
+            </ul>";
+    } else {
+        //Setar icone de usuario nao logado
+        $ImgPerfil = '<a href="login.php"><img src="assets/user-128.svg" style="height:3vw"></a>';
+        $list =
+            "<ul class='list-group'>
+                <a href='index.php?list'><li class='list-group-item'>Ver eventos</li></a>
+                <a href='upload.php'><li class='list-group-item'>Divulgar meu Evento</li></a>
+            </ul>";
+    }
+
+    $events = new Events();
+    $display = new Display();
 ?>
 <!DOCTYPE html>
 <html lang="pt-br">
@@ -8,20 +45,60 @@ include("php/db.inc.php");
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="./scripts/jquery-3.6.3.min.js"></script>
+    <script src="./scripts/scripts.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js" integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN" crossorigin="anonymous"></script>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="css/index.css">
-    <link rel="stylesheet" href="css/user.css">
     <link rel="icon" href="assets/favicon.png">
     <title>Event Flow | Usuário</title>
 </head>
 
 <body>
 
-    <?php
-    include("header.php");
-    ?>
-
+    <header>
+    <div class="navbar navbar-expand-lg navbar-light bg-white w-95 m-0 mx-auto">
+            <!--Logo-->
+            <a href="index.php" class="navbar-brand p-0 m-0"><img src="assets/logo-transparente.png" alt="logo" style="width:12vw; min-width:150px"></a>
+            <!--Barra de Pesquisa Desktop-->
+            <form id="desktop" class="d-flex align-items-center ms-3 w-50 p-0 m-0">
+                <input type="text" name="" id="search_bar" placeholder="Procurar evento">
+            </form>
+            <!--Botoes Mobile-->
+            <div id="mobile" style="margin-right:20px;cursor:pointer">
+                <img id="search" src="./assets/search_FILL0_wght400_GRAD0_opsz48.svg">
+                <img id="menu" src="./assets/menu.svg" width="24px">
+                <?php echo $list ?>
+            </div>
+            <!--Opcoes Desktop-->
+            <div id="options_desktop" class="w-50" style="height:6vw">
+                <ul class="h-100 p-0 m-0 align-items-center justify-content-end d-flex w-100">
+                    <li>
+                        <select id="localizacao" class="form-select border-0" aria-label="Default select example">
+                            <option selected>Pará de Minas</option>
+                        </select>
+                    </li>
+                    <li><a href="index.php?list">Ver eventos</a></li>
+                    <li><a href="upload.php">Divulgar meu Evento</a></li>
+                    <li><?php echo $ImgPerfil ?></li>
+                    <ul id="userUl" class="list-group">
+                        <a href="user.php?perfil" class="text-decoration-none text-black">
+                            <li class="list-group-item">Configurações</li>
+                        </a>
+                        <a href="php/logout.inc.php" class="text-decoration-none text-black">
+                            <li class="list-group-item">Sair</li>
+                        </a>
+                    </ul>
+                </ul>
+            </div>
+        </div>
+        <!--Barra Pesquisa Mobile-->
+        <form id="mobile" class="form-inline">
+            <input type="text" name="" id="mobile_search_bar" placeholder="Oque esta Procurando?">
+            <img src="assets/close_FILL0_wght400_GRAD0_opsz20.svg" id="close" alt="" style="cursor:pointer">
+        </form>
+    </header>
     <header>
         <div class="navbar navbar-expand-lg navbar-light" style="background-color:#FF5402">
 
