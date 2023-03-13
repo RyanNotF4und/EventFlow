@@ -15,11 +15,6 @@
             $upload_event = new UploadEvent($_FILES);
         }
     }
-
-    //Se o id de usuario existir
-    if (isset($_SESSION["id"])) {
-        
-    }
 ?>
 
 <!DOCTYPE html>
@@ -74,11 +69,13 @@
 
 <body style="height:auto">
     <?php
+        //Se o ID de usuario existir
         if (isset($_SESSION["id"])) {
-            //Selecionar usuario pelo id
+            //Selecionar Usuario pelo ID
             $user = $select->selectUserById($_SESSION['id']);
-            //Setar icone do perfil
+            //Setar Foto do Perfil
             $ImgPerfil = "<div id='user' style='cursor:pointer;'><img src=" . $user['ImgPerfil'] . " style='height:1.9vw'><img src=" . "assets/coin-svgrepo-com.svg" . " style='height:1vw;padding-inline:3px'>0</div>";
+            //Opções para usuário logado
             $list =
                 "<ul class='list-group'>
                     <a href='index.php?list'><li class='list-group-item'>Ver eventos</li></a>
@@ -90,22 +87,31 @@
     ?>
     <!--Cabeçalho-->
     <header>
-        <div class="navbar navbar-expand-lg navbar-light bg-white w-95 m-0 mx-auto">
+        
+        <!--Container-->
+        <div class="navbar navbar-expand-lg navbar-light bg-white w-95 m-0 mx-auto"> 
+            
             <!--Logo-->
             <a href="index.php" class="navbar-brand p-0 m-0"><img src="assets/logo-transparente.png" alt="logo" style="width:12vw; min-width:150px"></a>
+            
             <!--Barra de Pesquisa Desktop-->
             <form id="desktop" class="d-flex align-items-center ms-3 w-50 p-0 m-0">
-                <input type="text" name="" id="search_bar" placeholder="Procurar evento">
+                <input type="text" name="" id="search_bar" placeholder="Procurar eventos">
             </form>
+
             <!--Botoes Mobile-->
             <div id="mobile" style="margin-right:20px;cursor:pointer">
                 <img id="search" src="./assets/search_FILL0_wght400_GRAD0_opsz48.svg">
                 <img id="menu" src="./assets/menu.svg" width="24px">
                 <?php echo $list ?>
             </div>
+            <!--Botoes Mobile-->
+
             <!--Opcoes Desktop-->
             <div id="options_desktop" class="w-50" style="height:6vw">
+                <!--UL da opções-->
                 <ul class="h-100 p-0 m-0 align-items-center justify-content-end d-flex w-100">
+                    <!--Select com Localizações-->
                     <li>
                         <select id="localizacao" class="form-select border-0" aria-label="Default select example">
                             <option selected>Pará de Minas</option>
@@ -113,7 +119,9 @@
                     </li>
                     <li><a href="index.php?list">Ver eventos</a></li>
                     <li><a href="upload.php">Divulgar meu Evento</a></li>
-                    <li><?php echo $ImgPerfil ?></li>
+                    <li><?php echo $ImgPerfil ?></li> <!--Foto de Perfil-->
+
+                    <!--UL de Opções de Usuário Logado Mobile-->
                     <ul id="userUl" class="list-group">
                         <a href="user.php?perfil" class="text-decoration-none text-black">
                             <li class="list-group-item">Configurações</li>
@@ -121,15 +129,17 @@
                         <a href="php/logout.inc.php" class="text-decoration-none text-black">
                             <li class="list-group-item">Sair</li>
                         </a>
-                    </ul>
-                </ul>
-            </div>
-        </div>
+                    </ul> <!--UL de Opções de Usuário Logado Mobile-->
+                </ul> <!--UL da opções-->
+            </div> <!--Opcoes Desktop-->
+        </div> <!--Container-->
+        
         <!--Barra Pesquisa Mobile-->
         <form id="mobile" class="form-inline">
-            <input type="text" name="" id="mobile_search_bar" placeholder="Oque esta Procurando?">
-            <img src="assets/close_FILL0_wght400_GRAD0_opsz20.svg" id="close" alt="" style="cursor:pointer">
+            <input type="text" name="" id="mobile_search_bar" placeholder="Pesquisar eventos">
+            <img src="assets/close_FILL0_wght400_GRAD0_opsz20.svg" id="close" alt="close" style="cursor:pointer">
         </form>
+
     </header>
     
     <section class="p-1">
@@ -140,6 +150,7 @@
         <hr>
         <form method="POST" enctype="multipart/form-data" class="border border-black w-100 border-0 margin-top-bottom">
             <table class="align-middle table w-100">
+                <!--Imagem Input-->
                 <tr>
                     <td colspan="3" class="border-0">
                         <h4>Escolha uma imagem para ser capa do seu evento</h4>
@@ -147,6 +158,9 @@
                     </div>
                     </td>
                 </tr>
+                <!--Imagem Input-->
+
+                <!--Titulo Input-->
                 <tr>
                     <td class="border-0">
                         <h4>Titulo:</h4>
@@ -155,6 +169,9 @@
                         <input class="form-control form-control-lg w-100" type="text" name="title" required />
                     </td>
                 </tr>
+                <!--Titulo Input-->
+
+                <!--Estado, Cidado e Data Input-->
                 <tr>
                     <td class="border-0">
                         <h4>Estado: </h4>
@@ -183,6 +200,10 @@
                         <input class="form-control form-control-lg w-100" type="date" name="date_event" required />
                     </td>
                 <tr>
+                <!--Estado, Cidado e Data Input-->
+
+                <!--Endereço Input-->
+                <tr>
                     <td class="border-0">
                         <h4>Endereço: </h4>
                     </td>
@@ -190,47 +211,64 @@
                         <input class="form-control form-control-lg w-100" type="text" name="adress" required />
                     </td>
                 </tr>
+                <!--Endereço Input-->
+
+                <!--Descrição Input-->
                 <tr>
                     <td class="border-0">
                         <h4>Descrição: </h4>
                     </td>
                     <td colspan="100" class="border-0"><textarea class="form-control form-control-lg w-100" name="description" id="" cols="30" rows="10" required></textarea></td>
                 </tr>
+                <!--Endereço Input-->
             </table>
+
             <div class="d-flex justify-content-end">
                 <button type="submit" name="upload-image" class="border-0"><img src="assets/confirm-icon.svg" alt="" srcset="" id="botao"></button>
                 <a href="index.php"><img src="assets/red-x-icon.svg" alt="" srcset="" id="botao"></a>
             </div>
+
         </form>
         <hr>
     </section>
     <?php
-    } else {
-        //Setar icone de usuario nao logado
+    } else { //Caso o Usuário não esteja logado
+        //Setar Foto de Usuario Não Logado
         $ImgPerfil = '<a href="login.php"><img src="assets/user-128.svg" style="height:3vw"></a>';
+        //Setar Opções de Usuario Não Logado
         $list =
             "<ul class='list-group'>
                 <a href='index.php?list'><li class='list-group-item'>Ver eventos</li></a>
                 <a href='upload.php'><li class='list-group-item'>Divulgar meu Evento</li></a>
             </ul>";
     ?>
+    <!--Cabeçalho-->
     <header>
-        <div class="navbar navbar-expand-lg navbar-light bg-white w-95 m-0 mx-auto">
+        
+        <!--Container-->
+        <div class="navbar navbar-expand-lg navbar-light bg-white w-95 m-0 mx-auto"> 
+            
             <!--Logo-->
             <a href="index.php" class="navbar-brand p-0 m-0"><img src="assets/logo-transparente.png" alt="logo" style="width:12vw; min-width:150px"></a>
+            
             <!--Barra de Pesquisa Desktop-->
             <form id="desktop" class="d-flex align-items-center ms-3 w-50 p-0 m-0">
-                <input type="text" name="" id="search_bar" placeholder="Procurar evento">
+                <input type="text" name="" id="search_bar" placeholder="Procurar eventos">
             </form>
+
             <!--Botoes Mobile-->
             <div id="mobile" style="margin-right:20px;cursor:pointer">
                 <img id="search" src="./assets/search_FILL0_wght400_GRAD0_opsz48.svg">
                 <img id="menu" src="./assets/menu.svg" width="24px">
                 <?php echo $list ?>
             </div>
+            <!--Botoes Mobile-->
+
             <!--Opcoes Desktop-->
             <div id="options_desktop" class="w-50" style="height:6vw">
+                <!--UL da opções-->
                 <ul class="h-100 p-0 m-0 align-items-center justify-content-end d-flex w-100">
+                    <!--Select com Localizações-->
                     <li>
                         <select id="localizacao" class="form-select border-0" aria-label="Default select example">
                             <option selected>Pará de Minas</option>
@@ -238,7 +276,9 @@
                     </li>
                     <li><a href="index.php?list">Ver eventos</a></li>
                     <li><a href="upload.php">Divulgar meu Evento</a></li>
-                    <li><?php echo $ImgPerfil ?></li>
+                    <li><?php echo $ImgPerfil ?></li> <!--Foto de Perfil-->
+
+                    <!--UL de Opções de Usuário Logado Mobile-->
                     <ul id="userUl" class="list-group">
                         <a href="user.php?perfil" class="text-decoration-none text-black">
                             <li class="list-group-item">Configurações</li>
@@ -246,24 +286,30 @@
                         <a href="php/logout.inc.php" class="text-decoration-none text-black">
                             <li class="list-group-item">Sair</li>
                         </a>
-                    </ul>
-                </ul>
-            </div>
-        </div>
+                    </ul> <!--UL de Opções de Usuário Logado Mobile-->
+                </ul> <!--UL da opções-->
+            </div> <!--Opcoes Desktop-->
+        </div> <!--Container-->
+        
         <!--Barra Pesquisa Mobile-->
         <form id="mobile" class="form-inline">
-            <input type="text" name="" id="mobile_search_bar" placeholder="Oque esta Procurando?">
-            <img src="assets/close_FILL0_wght400_GRAD0_opsz20.svg" id="close" alt="" style="cursor:pointer">
+            <input type="text" name="" id="mobile_search_bar" placeholder="Pesquisar eventos">
+            <img src="assets/close_FILL0_wght400_GRAD0_opsz20.svg" id="close" alt="close" style="cursor:pointer">
         </form>
+
     </header>
-        <img class="rounded mx-auto d-block" src ="assets/avatar_click.svg" width="300vh" height="300vh">',
-        <br><h2 class='text-center'>Faça <a href='login.php' style='color: #FF5402'>Login</a> para divulgar um evento</h2><br>;
-        <div class="d-flex justify-content-center pb-5">
-            <a class="btn btn-lg text-white" style="padding-left: 2.5rem; padding-right: 2.5rem;background-color:#FF5402" href="login.php" role="button">Fazer login</a>
-        </div>
+    
+    <img class="rounded mx-auto d-block" src ="assets/avatar_click.svg" width="300vh" height="300vh">',
+    <br><h2 class='text-center'>Faça <a href='login.php' style='color: #FF5402'>Login</a> para divulgar um evento</h2><br>;
+
+    <div class="d-flex justify-content-center pb-5">
+        <a class="btn btn-lg text-white" style="padding-left: 2.5rem; padding-right: 2.5rem;background-color:#FF5402" href="login.php" role="button">Fazer login</a>
+    </div>
+
     <?php
-    }
+        }
     ?>
+
 </body>
 
 </html>

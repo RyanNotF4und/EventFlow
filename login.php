@@ -1,23 +1,25 @@
 <?php
-if (!isset($_SESSION)) {
-    //Se a sessão não existir, criar uma
-    session_start();
-}
 
-include("php/db.inc.php");
-include("php/user.inc.php");
-
-$user = new User();
-
-if(isset($_POST["submit"])) {
-    $result = $user->login($_POST["uname_email"],$_POST["psw"]);
-
-    if($result == 1) {
-        $_SESSION["login"] = true;
-        $_SESSION["id"] = $user->idUser();
-        header("Location: index.php");
+    if (!isset($_SESSION)) { //Se a sessão não existir, criar uma
+        session_start();
     }
-}
+
+    //Includes
+    include("php/db.inc.php");
+    include("php/user.inc.php");
+
+    $user = new User();
+
+    //Ao pressionar o botão de confirmar
+    if(isset($_POST["submit"])) {
+        $result = $user->login($_POST["uname_email"],$_POST["psw"]); //Enviar dados
+
+        if($result == 1) { //Se retornar 1, o usuário loga e redireciona para o index
+            $_SESSION["login"] = true;
+            $_SESSION["id"] = $user->idUser();
+            header("Location: index.php");
+        }
+    }
 
 ?>
 
@@ -25,17 +27,21 @@ if(isset($_POST["submit"])) {
 <html lang="pt-br">
 
 <head>
+
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
     <script src="./scripts/jquery-3.6.3.min.js"></script>
     <script src="./scripts/scripts.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js" integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN" crossorigin="anonymous"></script>
+    
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
     <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="css/index.css">
     <link rel="icon" href="assets/favicon.png">
     <title>Event Flow | Login</title>
+
 </head>
 
 <body style="max-height:100vh">
@@ -45,6 +51,7 @@ if(isset($_POST["submit"])) {
                 <div class="col-md-9 col-lg-6 col-xl-5">
                     <a href="index.php"><img src="assets/logo-transparente.png" class="img-fluid" alt="Logo"></a>
                     <div class="form-outline mb-3">
+                        <!--Avisos-->
                         <span class='text-warning'><?php if (isset($_SESSION['msg'])) { echo $_SESSION['msg'];unset($_SESSION['msg']) ;}?></span>
                     </div>
                 </div>
@@ -96,7 +103,6 @@ if(isset($_POST["submit"])) {
                             <button type="submit" name="submit" class="btn btn-lg text-white" style="padding-left: 2.5rem; padding-right: 2.5rem;background-color:#FF5402;">Login</button>
                             <p class="small fw-bold mt-2 pt-1 mb-0 ">Não possui uma conta? <a href="register.php" class="link-danger">Registrar</a></p>
                         </div>
-
                     </form>
                 </div>
             </div>
