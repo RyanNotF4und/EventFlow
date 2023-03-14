@@ -69,14 +69,14 @@
             <a href="index.php" class="navbar-brand p-0 m-0"><img src="assets/logo-transparente.png" alt="logo" style="width:12vw; min-width:150px"></a>
             
             <!--Barra de Pesquisa Desktop-->
-            <form id="desktop" class="d-flex align-items-center ms-3 w-50 p-0 m-0">
-                <input type="text" name="" id="search_bar" placeholder="Procurar eventos">
+            <form id="form_desktop" class="align-items-center w-50 p-0 m-0">
+                <input type="text" name="" class="mx-auto" id="search_bar_desktop" placeholder="Procurar eventos">
             </form>
 
             <!--Botoes Mobile-->
-            <div id="mobile" style="margin-right:20px;cursor:pointer">
+            <div id="mobile" class="w-25 justify-content-end pe-3">
                 <img id="search" src="./assets/search_FILL0_wght400_GRAD0_opsz48.svg">
-                <img id="menu" src="./assets/menu.svg" width="24px">
+                <img id="options" src="./assets/menu.svg" width="24px">
                 <?php echo $list ?>
             </div>
             <!--Botoes Mobile-->
@@ -109,7 +109,7 @@
         </div> <!--Container-->
         
         <!--Barra Pesquisa Mobile-->
-        <form id="mobile" class="form-inline">
+        <form id="form_mobile" class="form-inline">
             <input type="text" name="" id="mobile_search_bar" placeholder="Pesquisar eventos">
             <img src="assets/close_FILL0_wght400_GRAD0_opsz20.svg" id="close" alt="close" style="cursor:pointer">
         </form>

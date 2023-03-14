@@ -16,14 +16,13 @@ class Events extends db
     public function openEvent()
     {
         $page_id = $this->getEventId();
-        $data = $this->connect()->query("SELECT * FROM events WHERE id = '$page_id'");
-        while ($row = $data->fetch_assoc()) {
-            echo $row['title'];
-            ?>
-            <img src="<?php echo $row['thumb_path'] ?>">
-<?php
+        $result = $this->connect()->query("SELECT * FROM events WHERE id = '$page_id'");
+        if($result->num_rows > 0) {
+            $this->countView($page_id);
+            return $result;
+        } else {
+            return false;
         }
-        $this->countView($page_id);
     }
     protected function countView($page_id)
     {
@@ -36,6 +35,3 @@ class Events extends db
         }
     }
 }
-
-
-?>

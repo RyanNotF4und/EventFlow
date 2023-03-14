@@ -72,14 +72,15 @@
             <a href="index.php" class="navbar-brand p-0 m-0"><img src="assets/logo-transparente.png" alt="logo" style="width:12vw; min-width:150px"></a>
             
             <!--Barra de Pesquisa Desktop-->
-            <form id="desktop" class="d-flex align-items-center ms-3 w-50 p-0 m-0">
-                <input type="text" name="" id="search_bar" placeholder="Procurar eventos">
+            <form id="form_desktop" class="align-items-center w-50 p-0 m-0">
+                <input type="text" name="" class="mx-auto" id="search_bar_desktop" placeholder="Procurar eventos">
+                <span class="bar"></span>
             </form>
 
             <!--Botoes Mobile-->
-            <div id="mobile" style="margin-right:20px;cursor:pointer">
+            <div id="mobile" class="w-25 justify-content-end pe-3">
                 <img id="search" src="./assets/search_FILL0_wght400_GRAD0_opsz48.svg">
-                <img id="menu" src="./assets/menu.svg" width="24px">
+                <img id="options" src="./assets/menu.svg" width="24px">
                 <?php echo $list ?>
             </div>
             <!--Botoes Mobile-->
@@ -112,7 +113,7 @@
         </div> <!--Container-->
         
         <!--Barra Pesquisa Mobile-->
-        <form id="mobile" class="form-inline">
+        <form id="form_mobile" class="form-inline">
             <input type="text" name="" id="mobile_search_bar" placeholder="Pesquisar eventos">
             <img src="assets/close_FILL0_wght400_GRAD0_opsz20.svg" id="close" alt="close" style="cursor:pointer">
         </form>
@@ -122,7 +123,31 @@
     <!--Abrir Evento-->
     <?php
         if (isset($_GET['event'])) {
-            $events->openEvent();
+            $event = $events->openEvent(); //Chamar Função Abrir Evento
+            if ($event) {
+                foreach ($event as $data) {
+        ?>
+        <div class="w-50 mx-auto pt-5">
+            <img src="<?php echo $data['thumb_path'] ?>" alt="<?php echo $data['title'] ?>" class="w-100 rounded">
+        </div>
+        <div class="w-50 mx-auto">
+            <h1 class="fw-bold text-center"><?php echo $data['title'] ?></h1>
+            <p>Detalhes sobre o evento: <?php echo $data['description'] ?></p>
+            <p>Estado: <?php echo $data['state'] ?></p>
+            <p>Cidade: <?php echo $data['city'] ?></p>
+            <p>Data do evento: <?php echo $data['date_event'] ?></p>
+        </div>
+        <div class="w-100 text-center pt-5 mt-3 mb-3">
+        <button class="button"> Comprar ingresso </button>
+        </div>
+        <!--Barra Cinza-->
+        <div class="container-fluid" style="height:5vw;background-color:#dbdbdb"></div>
+
+        <?php
+                } //Foreach
+            } //If
+        ?>
+            <?php
         } else if (isset($_GET['list'])) {
     ?>
         <!--Mostrar Todos os Eventos-->

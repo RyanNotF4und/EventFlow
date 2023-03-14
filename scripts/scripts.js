@@ -1,23 +1,35 @@
 $(function () {
 
-    $('#mobile > #menu').click(function () {
+    $('#mobile > #options').click(function () {
         $('header > div > #mobile > ul').slideToggle();
     })
 
     $('#mobile > #search').click(function () {
-        $('header > form#mobile > input').slideToggle();
+        $('header > #form_mobile > input').slideToggle();
         $('#mobile > #search').css('display', 'none');
     })
 
     $('#user').click(function () {
         $('#userUl').slideToggle();
     })
+
     $('#mobile > #search').click(function () {
         $('#close').slideToggle();
     })
+
     $('#close').click(function () {
-        $('header > form#mobile > input').slideToggle();
+        $('header > #form_mobile > input').slideToggle();
         $('#close').slideToggle();
         $('#mobile > #search').fadeIn();
     })
+    $(window).resize(function () {
+        if ($(window).width() >= 610) {
+            $('#mobile_search_bar').css("display", "none");
+            $('#close').css("display", "none");
+        } else {
+            $('#mobile_search_bar').css("display", "block");
+            $('#close').css("display", "block");
+            $('#search').css("display", "none");
+        }
+    });
 })

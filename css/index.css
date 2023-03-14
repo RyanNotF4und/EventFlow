@@ -3,7 +3,7 @@
 * {
     margin: 0;
     padding: 0;
-    font-family:"Open Sans";
+    font-family: "Open Sans";
 }
 
 html,
@@ -19,8 +19,12 @@ body {
 /* ----------------------- /*
 /*Header*/
 /*Barra de Pesquisa*/
-/*Desktop*/
-header #search_bar {
+#form_desktop {
+    display: flex;
+    justify-content: center;
+}
+
+header #search_bar_desktop {
     width: 85%;
     min-height: 35px;
     max-height: 35px;
@@ -38,11 +42,55 @@ header #search_bar {
     padding-left: 50px;
     transition: all .3s;
 }
-header #search_bar:focus {
+
+header #search_bar_desktop:focus {
     outline: none;
     border-bottom: 1px solid #fc5b20;
 }
-/*Mobile*/
+
+header #mobile {
+    display: none;
+}
+
+header #mobile>#search {
+    display: none;
+}
+
+@media screen and (min-width: 1201px) {
+
+    #mobile_search_bar {
+        display: none;
+    }
+}
+
+@media screen and (max-width: 1200px) {
+    #options_desktop {
+        display: none;
+    }
+
+    header #mobile {
+        display: flex;
+    }
+}
+
+@media screen and (max-width: 610px) {
+    header #mobile {
+        display: flex;
+    }
+
+    #form_desktop {
+        display: none;
+    }
+
+    #search_bar_desktop {
+        display: none;
+    }
+
+    header #mobile>#search {
+        display: block;
+    }
+}
+
 header #mobile_search_bar {
     display: none;
     width: 35vh;
@@ -60,20 +108,22 @@ header #mobile_search_bar {
     background-position-y: center;
     padding-left: 50px;
 }
-header #mobile_search_bar:focus{
+
+header #mobile_search_bar:focus {
     outline: none;
 }
 
-#close{
+#close {
     display: none;
     position: absolute;
     top: 30px;
     left: 80vw;
 }
+
 /*********************/
 /*Opcoes*/
 /*Desktop*/
-header #options_desktop > ul > li {
+header #options_desktop>ul>li {
     display: inline-block;
     padding-inline: 1.1vw;
     font-family: 'Open Sans', sans-serif;
@@ -82,13 +132,13 @@ header #options_desktop > ul > li {
     transition: all .8s;
 }
 
-header #options_desktop > ul > li > a {
+header #options_desktop>ul>li>a {
     color: #000000;
     text-decoration: none;
     transition: 0.1s;
 }
 
-header #options_desktop > ul > li > a:hover {
+header #options_desktop>ul>li>a:hover {
     color: #000000;
     text-decoration: underline;
     transition: 0.1s;
@@ -96,8 +146,9 @@ header #options_desktop > ul > li > a:hover {
 
 #localizacao {
     font-size: 12px;
-    cursor:pointer
+    cursor: pointer
 }
+
 /*Mobile*/
 #userUl {
     display: none;
@@ -109,80 +160,27 @@ header #options_desktop > ul > li > a:hover {
     z-index: 1;
 }
 
-header #mobile {
-    display: none;
-}
-header #mobile > ul {
+header #mobile>ul {
     display: none;
     position: absolute;
     background-color: #ffffff;
     top: 60px;
-    right: 5px; 
+    right: 5px;
     font-size: 2vh;
     z-index: 1;
 }
 
-header #mobile > ul a {
+header #mobile>ul a {
     text-decoration: none;
 }
 
-header > div > #mobile > #search {
-    display: none;
-}
-
-header > #mobileSearch {
-    display: none;
-}
-
-header form#mobile > input {
+header #form_mobile>input {
     display: none;
     position: absolute;
     top: 25px;
     left: 40vw;
     width: 45%;
     padding-left: 40px;
-}
-
-@media only screen and (max-width: 990px) {
-
-    header #options_desktop {
-        display: none;
-    }
-
-    header #mobile {
-        display: block;
-    }
-
-    #desktop {
-        width: 100vh;
-    }
-
-    header #mobile {
-        display: flex;
-    }
-
-    #localizacao {
-        font-size: 10px;
-    }
-
-}
-
-@media only screen and (max-width: 550px) {
-    header #mobile>#search {
-        display: block;
-    }
-
-    header #desktop {
-        display: none;
-    }
-
-    #search_bar {
-        border-bottom: none;
-    }
-
-    #localizacao {
-        font-size: auto;
-    }
 }
 
 /*-----------------*/
@@ -204,6 +202,7 @@ header form#mobile > input {
 section>form>table td {
     padding: 10px;
 }
+
 /*-----------------*/
 /* Carrossel */
 .carousel {
@@ -223,6 +222,7 @@ section>form>table td {
     text-shadow: 2px 0 #000, -2px 0 #000, 0 2px #000, 0 -2px #000,
         1px 1px #000, -1px -1px #000, 1px -1px #000, -1px 1px #000;
 }
+
 /*-----------------*/
 /*Card Eventos*/
 #container {
@@ -253,7 +253,7 @@ section>form>table td {
     margin-top: 20px;
     align-items: center;
     justify-content: center;
-}   
+}
 
 #card {
     max-width: 300px;
@@ -281,3 +281,62 @@ section>form>table td {
 }
 
 /*-----------------*/
+
+/*Botao de compra*/
+.button {
+    --color: #FF5402;
+    padding: 0.8em 1.7em;
+    background-color: transparent;
+    border-radius: .3em;
+    position: relative;
+    overflow: hidden;
+    cursor: pointer;
+    transition: .5s;
+    font-weight: 400;
+    font-size: 17px;
+    border: 1px solid;
+    font-family: inherit;
+    text-transform: uppercase;
+    color: var(--color);
+    z-index: 1;
+}
+
+.button::before,
+.button::after {
+    content: '';
+    display: block;
+    width: 50px;
+    height: 50px;
+    transform: translate(-50%, -50%);
+    position: absolute;
+    border-radius: 50%;
+    z-index: -1;
+    background-color: var(--color);
+    transition: 1s ease;
+}
+
+.button::before {
+    top: -1em;
+    left: -1em;
+}
+
+.button::after {
+    left: calc(100% + 1em);
+    top: calc(100% + 1em);
+}
+
+.button:hover::before,
+.button:hover::after {
+    height: 410px;
+    width: 410px;
+}
+
+.button:hover {
+    color: #FFF;
+}
+
+.button:active {
+    filter: brightness(.8);
+}
+
+/*-------------*/
