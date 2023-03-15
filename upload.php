@@ -146,7 +146,7 @@
         <hr>
 
         <form id="form" class="w-100" method="POST" enctype="multipart/form-data">
-            <div class="file-div mx-auto">
+            <div class="file-div mx-auto mb-5">
 
                 <span class="form-title m-2">Escolha a capa do seu Evento</span>
                 <p class="form-paragraph">
