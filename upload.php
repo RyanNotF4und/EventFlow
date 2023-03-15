@@ -155,21 +155,21 @@
                 <label for="file-input" class="drop-container">
                 <span class="drop-title">Arraste a imagem</span>
                 ou
-                <input type="file" accept="image/*" required="" id="file-input">
+                <input type="file" accept="image/*" name="image" id="file-input" required>
                 </label>
             </div>
 
             <div class="inputGroup m-2 ms-5 mx-auto">
                 <div>
-                    <input type="text" name="text" id="Titulo" required>
+                    <input type="text" name="title" id="Titulo" required>
                     <label for="Titulo">Titulo do Evento</label>
                 </div>
                 <div class="mt-4">
-                    <input type="text" name="text" id="Endereco" required>
+                    <input type="text" name="adress" id="Endereco" required>
                     <label for="Endereco">Endereço</label>
                 </div>
                 <div class="mt-4">
-                    <input type="text" name="text" id="Descricao" class="p-5" required>
+                    <input type="text" name="description" id="Descricao" class="pt-5 pb-5" required>
                     <label for="Descricao">Descrição</label>
                 </div>
             </div>
@@ -186,10 +186,6 @@
                     <select class="form-select form-control-lg ms-3" name="state" id="">
                         <option value="Pará de Minas">Pará de Minas</option>
                     </select>
-                </div>
-                <div class="d-flex mt-4">
-                    <span class="d-flex align-items-center">Data do Evento:</span>
-                    <input class="form-control form-control-lg w-50 ms-3" type="date" name="date_event" required />
                 </div>
                 <div class="d-flex mt-4">
                     <span class="d-flex align-items-center">Data do Evento:</span>
