@@ -9,7 +9,28 @@
 html,
 body {
     height: 100%;
-    background-color: #f5f5f5;
+    background: rgb(244, 244, 244);
+    background: radial-gradient(circle, rgba(244, 244, 244, 1) 0%, rgba(227, 227, 227, 1) 50%, rgba(244, 244, 244, 1) 100%);
+}
+
+::-webkit-scrollbar {
+    width: 15px;
+    background-color: #EAEAEA;
+}
+
+::-webkit-scrollbar-track {
+    background: #EAEAEA;
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+    background: #fc5b20;
+    border-radius: 10px;
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+    background: #ff4400;
 }
 
 .clear {
@@ -253,6 +274,7 @@ section>form>table td {
     margin-top: 20px;
     align-items: center;
     justify-content: center;
+    padding: 20px;
 }
 
 #card {
@@ -283,60 +305,6 @@ section>form>table td {
 /*-----------------*/
 
 /*Botao de compra*/
-.button {
-    --color: #FF5402;
-    padding: 0.8em 1.7em;
-    background-color: transparent;
-    border-radius: .3em;
-    position: relative;
-    overflow: hidden;
-    cursor: pointer;
-    transition: .5s;
-    font-weight: 400;
-    font-size: 17px;
-    border: 1px solid;
-    font-family: inherit;
-    text-transform: uppercase;
-    color: var(--color);
-    z-index: 1;
-}
 
-.button::before,
-.button::after {
-    content: '';
-    display: block;
-    width: 50px;
-    height: 50px;
-    transform: translate(-50%, -50%);
-    position: absolute;
-    border-radius: 50%;
-    z-index: -1;
-    background-color: var(--color);
-    transition: 1s ease;
-}
-
-.button::before {
-    top: -1em;
-    left: -1em;
-}
-
-.button::after {
-    left: calc(100% + 1em);
-    top: calc(100% + 1em);
-}
-
-.button:hover::before,
-.button:hover::after {
-    height: 410px;
-    width: 410px;
-}
-
-.button:hover {
-    color: #FFF;
-}
-
-.button:active {
-    filter: brightness(.8);
-}
 
 /*-------------*/

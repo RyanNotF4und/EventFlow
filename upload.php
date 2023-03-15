@@ -10,7 +10,7 @@
 
     $select = new Select();
 
-    if (isset($_POST['upload-image'])) {
+    if (isset($_POST['upload'])) {
         if ($_FILES['image']['error'] == 0) {
             $upload_event = new UploadEvent($_FILES);
         }
@@ -30,41 +30,36 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
     <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="css/index.css">
+    <link rel="stylesheet" href="css/button-submit.css">
+    <link rel="stylesheet" href="css/button-cancel.css">
+    <link rel="stylesheet" href="css/file-input.css">
+    <link rel="stylesheet" href="css/input-group.css">
     <link rel="icon" href="assets/favicon.png">
     <title>Event Flow | Divulgar meu evento</title>
 </head>
 
 <style>
-    section {
-        margin-inline: 5vh;
-        margin-top: 5vh;
-        margin-bottom: 5vh;
+    .inputGroup {
+        width: 450px;
     }
-    @media screen and (max-width:900px) {
-        h4 {
-            font-size: 12px;
-        }
 
-        .form-control-lg {
-            min-height: calc(0.5em + 1rem + calc(var(--bs-border-width) * 2));
-            padding: 0.5rem 1rem;
-            font-size: 10px;
-            border-radius: 0.5rem;
-        }
+    #file-input {
+        font-size: 10px;
+    }
 
-        #file {
-            width: 120px;
-        }
+    #form {
+        display: flex;
+    }
 
-        #botao {
-            width: 5vw;
+    @media screen and (max-width: 990px) {
+        #form {
+            display: block;
         }
-
-        section {
-            margin: 0;
-            padding: 0;
+        .inputGroup {
+            width: 75%;
         }
     }
+    
 </style>
 
 <body style="height:auto">
@@ -97,6 +92,7 @@
             <!--Barra de Pesquisa Desktop-->
             <form id="form_desktop" class="align-items-center w-50 p-0 m-0">
                 <input type="text" name="" class="mx-auto" id="search_bar_desktop" placeholder="Procurar eventos">
+                <span class="bar"></span>
             </form>
 
             <!--Botoes Mobile-->
@@ -148,87 +144,68 @@
         <span class="text-warning" style="font-size:12px";>*Será feito uma verificação antes de ser lançado*</span>
         <span class='text-warning'><?php if (isset($_SESSION['msg'])) {echo $_SESSION['msg'];unset($_SESSION['msg']);} else {echo @$upload_event->error;} ?></span>
         <hr>
-        <form method="POST" enctype="multipart/form-data" class="border border-black w-100 border-0 margin-top-bottom">
-            <table class="align-middle table w-100">
-                <!--Imagem Input-->
-                <tr>
-                    <td colspan="3" class="border-0">
-                        <h4>Escolha uma imagem para ser capa do seu evento</h4>
-                    <td colspan="100" class="border-0"><input id="file" class="form-control form-control-lg" type="file" name="image" accept="image/*" required /></td>
-                    </div>
-                    </td>
-                </tr>
-                <!--Imagem Input-->
 
-                <!--Titulo Input-->
-                <tr>
-                    <td class="border-0">
-                        <h4>Titulo:</h4>
-                    </td>
-                    <td colspan="100" class="border-0">
-                        <input class="form-control form-control-lg w-100" type="text" name="title" required />
-                    </td>
-                </tr>
-                <!--Titulo Input-->
+        <form id="form" class="w-100" method="POST" enctype="multipart/form-data">
+            <div class="file-div mx-auto">
 
-                <!--Estado, Cidado e Data Input-->
-                <tr>
-                    <td class="border-0">
-                        <h4>Estado: </h4>
-                    </td>
-                    <td class="border-0">
-                        <select class="form-select form-control-lg w-100" name="state" id="">
-                            <option value="MG">
-                                <h4>MG</h4>
-                            </option>
-                        </select>
-                    </td>
-                    <td class="border-0">
-                        <h4 class="text-end">Cidade: </h4>
-                    </td>
-                    <td class="border-0">
-                        <select class="form-select form-control-lg w-100" name="city" id="">
-                            <option value="Para de Minas">
-                                <h4>Pará de Minas</h4>
-                            </option>
-                        </select>
-                    </td>
-                    <td class="border-0">
-                        <h4 class="text-end">Data do evento: </h4>
-                    </td>
-                    <td class="border-0">
-                        <input class="form-control form-control-lg w-100" type="date" name="date_event" required />
-                    </td>
-                <tr>
-                <!--Estado, Cidado e Data Input-->
-
-                <!--Endereço Input-->
-                <tr>
-                    <td class="border-0">
-                        <h4>Endereço: </h4>
-                    </td>
-                    <td colspan="100" class="border-0">
-                        <input class="form-control form-control-lg w-100" type="text" name="adress" required />
-                    </td>
-                </tr>
-                <!--Endereço Input-->
-
-                <!--Descrição Input-->
-                <tr>
-                    <td class="border-0">
-                        <h4>Descrição: </h4>
-                    </td>
-                    <td colspan="100" class="border-0"><textarea class="form-control form-control-lg w-100" name="description" id="" cols="30" rows="10" required></textarea></td>
-                </tr>
-                <!--Endereço Input-->
-            </table>
-
-            <div class="d-flex justify-content-end">
-                <button type="submit" name="upload-image" class="border-0"><img src="assets/confirm-icon.svg" alt="" srcset="" id="botao"></button>
-                <a href="index.php"><img src="assets/red-x-icon.svg" alt="" srcset="" id="botao"></a>
+                <span class="form-title m-2">Escolha a capa do seu Evento</span>
+                <p class="form-paragraph">
+                    PNG, JPEG ou JPG
+                </p>
+                <label for="file-input" class="drop-container">
+                <span class="drop-title">Arraste a imagem</span>
+                ou
+                <input type="file" accept="image/*" required="" id="file-input">
+                </label>
             </div>
 
+            <div class="inputGroup m-2 ms-5 mx-auto">
+                <div>
+                    <input type="text" name="text" id="Titulo" required>
+                    <label for="Titulo">Titulo do Evento</label>
+                </div>
+                <div class="mt-4">
+                    <input type="text" name="text" id="Endereco" required>
+                    <label for="Endereco">Endereço</label>
+                </div>
+                <div class="mt-4">
+                    <input type="text" name="text" id="Descricao" class="p-5" required>
+                    <label for="Descricao">Descrição</label>
+                </div>
+            </div>
+
+            <div class="inputGroup m-2 ms-5 me-5" style="width:350px">
+                <div class="d-flex mt-2">
+                    <span class="d-flex align-items-center">Estado:</span>
+                    <select class="form-select form-control-lg ms-3" name="state" id="">
+                        <option value="MG">MG</option>
+                    </select>
+                </div>
+                <div class="d-flex mt-4">
+                    <span class="d-flex align-items-center">Cidade:</span>
+                    <select class="form-select form-control-lg ms-3" name="state" id="">
+                        <option value="Pará de Minas">Pará de Minas</option>
+                    </select>
+                </div>
+                <div class="d-flex mt-4">
+                    <span class="d-flex align-items-center">Data do Evento:</span>
+                    <input class="form-control form-control-lg w-50 ms-3" type="date" name="date_event" required />
+                </div>
+                <div class="d-flex mt-4">
+                    <span class="d-flex align-items-center">Data do Evento:</span>
+                    <input class="form-control form-control-lg w-50 ms-3" type="date" name="date_event" required />
+                </div>
+                <div class="d-flex mt-4">
+                    <button type="submit" name="upload" class="submit m-1"><span class="text">Enviar</span><span class="icon"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M20.285 2l-11.285 11.567-5.286-5.011-3.714 3.716 9 8.728 15-15.285z"/></svg></span></button>
+                    <a href="index.php" class="text-decoration-none"><div class="cancel noselect m-1"><span class="text">Cancelar</span><span class="icon"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M24 20.188l-8.315-8.209 8.2-8.282-3.697-3.697-8.212 8.318-8.31-8.203-3.666 3.666 8.321 8.24-8.206 8.313 3.666 3.666 8.237-8.318 8.285 8.203z"></path></svg></span></div></a>
+                </div>
+            </div>
         </form>
+
+
+
+
+        
         <hr>
     </section>
     <?php
@@ -252,14 +229,15 @@
             <a href="index.php" class="navbar-brand p-0 m-0"><img src="assets/logo-transparente.png" alt="logo" style="width:12vw; min-width:150px"></a>
             
             <!--Barra de Pesquisa Desktop-->
-            <form id="desktop" class="d-flex align-items-center ms-3 w-50 p-0 m-0">
-                <input type="text" name="" id="search_bar" placeholder="Procurar eventos">
+            <form id="form_desktop" class="align-items-center w-50 p-0 m-0">
+                <input type="text" name="" class="mx-auto" id="search_bar_desktop" placeholder="Procurar eventos">
+                <span class="bar"></span>
             </form>
 
             <!--Botoes Mobile-->
-            <div id="mobile" style="margin-right:20px;cursor:pointer">
+            <div id="mobile" class="w-25 justify-content-end pe-3">
                 <img id="search" src="./assets/search_FILL0_wght400_GRAD0_opsz48.svg">
-                <img id="menu" src="./assets/menu.svg" width="24px">
+                <img id="options" src="./assets/menu.svg" width="24px">
                 <?php echo $list ?>
             </div>
             <!--Botoes Mobile-->
@@ -292,14 +270,14 @@
         </div> <!--Container-->
         
         <!--Barra Pesquisa Mobile-->
-        <form id="mobile" class="form-inline">
+        <form id="form_mobile" class="form-inline">
             <input type="text" name="" id="mobile_search_bar" placeholder="Pesquisar eventos">
             <img src="assets/close_FILL0_wght400_GRAD0_opsz20.svg" id="close" alt="close" style="cursor:pointer">
         </form>
 
     </header>
     
-    <img class="rounded mx-auto d-block" src ="assets/avatar_click.svg" width="300vh" height="300vh">',
+    <img class="rounded mx-auto d-block" src ="assets/avatar_click.svg">
     <br><h2 class='text-center'>Faça <a href='login.php' style='color: #FF5402'>Login</a> para divulgar um evento</h2><br>;
 
     <div class="d-flex justify-content-center pb-5">

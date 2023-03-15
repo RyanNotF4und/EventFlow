@@ -89,6 +89,7 @@ class UploadEvent extends User
     {
         $this->connect()->query("INSERT INTO events VALUES ('0','$this->user_id','$this->title','$this->uploads_folder','$this->description','$this->state','$this->city','$this->adress','$this->date_event',NOW(),'0','no')");
         $_SESSION['msg'] = '<div class="alert alert-success rounded-0" role="alert">Evento enviado com sucesso!</div>';
+        sleep(3);
         header("Location: upload.php");
         exit();
     }

@@ -1,0 +1,60 @@
+button.submit {
+    width: 150px;
+    height: 50px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    background: green;
+    border: none;
+    border-radius: 5px;
+    box-shadow: 1px 1px 3px rgba(0, 0, 0, 0.15);
+}
+
+button.submit,
+button.submit span {
+    transition: 200ms;
+}
+
+button.submit .text {
+    transform: translateX(35px);
+    color: white;
+    font-weight: bold;
+}
+
+button.submit .icon {
+    position: absolute;
+    border-left: 1px solid #009900;
+    transform: translateX(110px);
+    height: 40px;
+    width: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+button.submit svg {
+    width: 15px;
+    fill: #eee;
+}
+
+button.submit:hover {
+    background: #009900;
+}
+
+button.submit:hover .text {
+    color: transparent;
+}
+
+button.submit:hover .icon {
+    width: 150px;
+    border-left: none;
+    transform: translateX(0);
+}
+
+button.submit:focus {
+    outline: none;
+}
+
+button.submit:active .icon svg {
+    transform: scale(0.8);
+}

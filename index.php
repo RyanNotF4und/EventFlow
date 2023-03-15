@@ -56,6 +56,7 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
     <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="css/index.css">
+    <link rel="stylesheet" href="css/button-details.css">
     <link rel="icon" href="assets/favicon.png">
 
     <title>Event Flow | Inicio</title>
@@ -159,14 +160,13 @@
                         if ($event) {
                             foreach ($event as $data) {
                     ?>
-                    <a class="text-decoration-none text-reset" href="?event=<?php echo $data['id'] ?>">
+                    
                         <article class="thumbnail-preview ms-2 me-2 ">
+                            <h3 class="fw-bold text-center"><?php echo $data['title'] ?></h3>
                             <div id="card" class="rounded" style="background: url(<?php echo $data['thumb_path'] ?>) no-repeat center;background-size:cover;height:200px"></div>
-                            <h3 class="fw-bold"><?php echo $data['title'] ?></h3>
-                            <p><?php echo $data['description'] ?></p>
-                            <p>Estado: <?php echo $data['state'] ?></p>
-                            <p>Cidade: <?php echo $data['city'] ?></p>
+                            <?php echo $data['state'] ?>, <?php echo $data['city'] ?>
                             <p>Data do evento: <?php echo $data['date_event'] ?></p>
+                            <a class="text-decoration-none text-reset d-flex justify-content-center" href="?event=<?php echo $data['id'] ?>"><button class="detail"> Ver Detalhes <span></span></button></a>
                         </article>
                     </a>
                     <?php
