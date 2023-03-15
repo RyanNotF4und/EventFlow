@@ -56,6 +56,7 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
     <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="css/index.css">
+    <link rel="stylesheet" href="css/logo-shine.css">
     <link rel="stylesheet" href="css/button-details.css">
     <link rel="icon" href="assets/favicon.png">
 
@@ -70,7 +71,7 @@
         <div class="navbar navbar-expand-lg navbar-light bg-white w-95 m-0 mx-auto"> 
             
             <!--Logo-->
-            <a href="index.php" class="navbar-brand p-0 m-0"><img src="assets/logo-transparente.png" alt="logo" style="width:12vw; min-width:150px"></a>
+            <a href="index.php" class="navbar-brand p-0 m-0"><div class="hover h-100"><figure><img src="assets/logo-transparente.png" alt="logo" style="width:12vw; min-width:150px"></figure></div></a>
             
             <!--Barra de Pesquisa Desktop-->
             <form id="form_desktop" class="align-items-center w-50 p-0 m-0">
@@ -161,7 +162,7 @@
                             foreach ($event as $data) {
                     ?>
                     
-                        <article class="thumbnail-preview ms-2 me-2 ">
+                        <article class="thumbnail-preview ms-2 me-2">
                             <h3 class="fw-bold text-center"><?php echo $data['title'] ?></h3>
                             <div id="card" class="rounded" style="background: url(<?php echo $data['thumb_path'] ?>) no-repeat center;background-size:cover;height:200px"></div>
                             <?php echo $data['state'] ?>, <?php echo $data['city'] ?>

@@ -1,0 +1,60 @@
+div.edit {
+    width: 150px;
+    height: 50px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    background: orange;
+    border: none;
+    border-radius: 5px;
+    box-shadow: 1px 1px 3px rgba(0, 0, 0, 0.15);
+}
+
+div.edit,
+div.edit span {
+    transition: 200ms;
+}
+
+div.edit .text {
+    transform: translateX(35px);
+    color: white;
+    font-weight: bold;
+}
+
+div.edit .icon {
+    position: absolute;
+    border-left: 1px solid #e29300;
+    transform: translateX(110px);
+    height: 40px;
+    width: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+div.edit svg {
+    width: 15px;
+    fill: #eee;
+}
+
+div.edit:hover {
+    background: #e29300;
+}
+
+div.edit:hover .text {
+    color: transparent;
+}
+
+div.edit:hover .icon {
+    width: 150px;
+    border-left: none;
+    transform: translateX(0);
+}
+
+div.edit:focus {
+    outline: none;
+}
+
+div.edit:active .icon svg {
+    transform: scale(0.8);
+}

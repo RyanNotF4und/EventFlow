@@ -30,7 +30,7 @@
     margin: 0em;
     margin-left: 1.3em;
     padding: 0.4em;
-    background-color: white;
+    background-color: #F9F9F9;
 }
 
 .inputGroup :is(input:focus, input:valid) {

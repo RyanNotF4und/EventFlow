@@ -15,7 +15,8 @@ class UploadEvent extends User
     private $city; //Cidade do evento
     private $adress; //Endereco do evento
     private $date_event; //Data do evento
-
+    private $final_date_event; //Data do termino do evento
+ 
     private $allowed_image_types = ["image/jpeg", "image/jpg", "image/png"];
 
     public $error;
@@ -35,6 +36,7 @@ class UploadEvent extends User
         $this->city = $_POST['city'];
         $this->adress = $_POST['adress'];
         $this->date_event = $_POST['date_event'];
+        $this->final_date_event = $_POST['final_date_event'];
 
         $this->isImage();
         $this->imageNameValidation();
@@ -87,7 +89,7 @@ class UploadEvent extends User
 
     private function recordEvent()
     {
-        $this->connect()->query("INSERT INTO events VALUES ('0','$this->user_id','$this->title','$this->uploads_folder','$this->description','$this->state','$this->city','$this->adress','$this->date_event',NOW(),'0','no')");
+        $this->connect()->query("INSERT INTO events VALUES ('0','$this->user_id','$this->title','$this->uploads_folder','$this->description','$this->state','$this->city','$this->adress','$this->date_event', '$this->final_date_event', NOW(),'0','no')");
         $_SESSION['msg'] = '<div class="alert alert-success rounded-0" role="alert">Evento enviado com sucesso!</div>';
         sleep(3);
         header("Location: upload.php");

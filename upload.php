@@ -34,6 +34,7 @@
     <link rel="stylesheet" href="css/button-cancel.css">
     <link rel="stylesheet" href="css/file-input.css">
     <link rel="stylesheet" href="css/input-group.css">
+    <link rel="stylesheet" href="css/logo-shine.css">
     <link rel="icon" href="assets/favicon.png">
     <title>Event Flow | Divulgar meu evento</title>
 </head>
@@ -87,7 +88,7 @@
         <div class="navbar navbar-expand-lg navbar-light bg-white w-95 m-0 mx-auto"> 
             
             <!--Logo-->
-            <a href="index.php" class="navbar-brand p-0 m-0"><img src="assets/logo-transparente.png" alt="logo" style="width:12vw; min-width:150px"></a>
+            <a href="index.php" class="navbar-brand p-0 m-0"><div class="hover h-100"><figure><img src="assets/logo-transparente.png" alt="logo" style="width:12vw; min-width:150px"></figure></div></a>
             
             <!--Barra de Pesquisa Desktop-->
             <form id="form_desktop" class="align-items-center w-50 p-0 m-0">
@@ -139,16 +140,16 @@
     </header>
     
     <section class="p-1">
-        <h1 style="width:100%;font-size:24px;font-weight:bolder">Divulgar um evento</h1>
-        <p style="font-size:12px">Com a Event Flow é extremamente simples criar e divulgar seus eventos !<br>Preencha o que se pede e seu evento estará visivel para milhares de pessoas !</p>
-        <span class="text-warning" style="font-size:12px";>*Será feito uma verificação antes de ser lançado*</span>
+        <h1 style="width:100%;font-weight:bolder">Divulgar um evento</h1>
+        <p>Com a Event Flow é extremamente simples criar e divulgar seus eventos !<br>Preencha o que se pede e seu evento estará visivel para milhares de pessoas !</p>
+        <span class="text-warning">*Será feito uma verificação antes de ser lançado*</span>
         <span class='text-warning'><?php if (isset($_SESSION['msg'])) {echo $_SESSION['msg'];unset($_SESSION['msg']);} else {echo @$upload_event->error;} ?></span>
         <hr>
 
         <form id="form" class="w-100" method="POST" enctype="multipart/form-data">
             <div class="file-div mx-auto mb-5">
 
-                <span class="form-title m-2">Escolha a capa do seu Evento</span>
+                <span class="form-title">Escolha a capa do seu Evento</span>
                 <p class="form-paragraph">
                     PNG, JPEG ou JPG
                 </p>
@@ -159,7 +160,7 @@
                 </label>
             </div>
 
-            <div class="inputGroup m-2 ms-5 mx-auto">
+            <div class="inputGroup mx-auto">
                 <div>
                     <input type="text" name="title" id="Titulo" required>
                     <label for="Titulo">Titulo do Evento</label>
@@ -174,7 +175,7 @@
                 </div>
             </div>
 
-            <div class="inputGroup m-2 ms-5 me-5" style="width:350px">
+            <div class="inputGroup mx-auto" style="width:350px">
                 <div class="d-flex mt-2">
                     <span class="d-flex align-items-center">Estado:</span>
                     <select class="form-select form-control-lg ms-3" name="state" id="">
@@ -190,8 +191,15 @@
                 <div class="d-flex mt-4">
                     <span class="d-flex align-items-center">Data do Evento:</span>
                     <input class="form-control form-control-lg w-50 ms-3" type="date" name="date_event" required />
+                    
                 </div>
-                <div class="d-flex mt-4">
+                <div class="d-flex justify-content-center mt-2">
+                    <span class="ms-5">Até:</span>
+                </div>
+                <div class="d-flex justify-content-end mt-2">
+                    <input class="form-control form-control-lg w-50 me-5" type="date" name="final_date_event" required />
+                </div>
+                <div class="d-flex mt-2">
                     <button type="submit" name="upload" class="submit m-1"><span class="text">Enviar</span><span class="icon"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M20.285 2l-11.285 11.567-5.286-5.011-3.714 3.716 9 8.728 15-15.285z"/></svg></span></button>
                     <a href="index.php" class="text-decoration-none"><div class="cancel noselect m-1"><span class="text">Cancelar</span><span class="icon"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M24 20.188l-8.315-8.209 8.2-8.282-3.697-3.697-8.212 8.318-8.31-8.203-3.666 3.666 8.321 8.24-8.206 8.313 3.666 3.666 8.237-8.318 8.285 8.203z"></path></svg></span></div></a>
                 </div>
