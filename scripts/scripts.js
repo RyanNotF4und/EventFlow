@@ -1,4 +1,22 @@
 $(function () {
+    $('#user').click(function () {
+        $('#user-options').slideToggle();
+    })
+
+    $('#ul-button').click(function () {
+        $('#options-mobile').slideToggle();
+    })
+
+    $('#search').click(function () {
+        $('#search-input').slideToggle();
+    })
+
+
+
+
+
+
+    
     $('#mobile > #options').click(function () {
         $('header > div > #mobile > ul').slideToggle();
     })

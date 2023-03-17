@@ -25,12 +25,12 @@
 
 @-webkit-keyframes shine {
     100% {
-        left: 70%;
+        left: 40%;
     }
 }
 
 @keyframes shine {
     100% {
-        left: 70%;
+        left: 40%;
     }
 }

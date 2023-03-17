@@ -1,0 +1,274 @@
+//Resetar o Documento
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+//Scrollbar
+::-webkit-scrollbar {
+    width: 15px;
+    background-color: #EAEAEA;
+}
+
+::-webkit-scrollbar-track {
+    background: #EAEAEA;
+}
+
+
+::-webkit-scrollbar-thumb {
+    background: #fc5b20;
+    border-radius: 10px;
+
+    &:hover {
+        background: #ff4400;
+    }
+}
+
+body {
+    height: 100%;
+    background-color: #f9f9f9;
+    font-family: "Open Sans";
+
+    header {
+
+        nav {
+
+            #options-mobile {
+                display: none;
+                position: absolute;
+                right: 0;
+                top: 80px;
+                z-index: 1;
+                
+                a {
+                    text-decoration: none;
+
+                    &:hover {
+                        opacity: 50%;
+                    }
+                }
+            }
+
+            #ul-button {
+                @media screen and (min-width:1281px) {
+                    display: none;
+                }
+
+                @media screen and (max-width:1280px) {
+                    display: block;
+                    width: 24px;
+                    position: absolute;
+                    right: 0;
+                    top: 30px;
+                    margin-right: 10px;
+                }
+            }
+
+            #logo {
+                width: 10vw;
+                min-width: 150px;
+                height: 100%;
+            }
+
+            #form {
+
+                @media screen and (min-width:1280px) {
+                    display: flex !important;
+                    justify-content: center;
+                    width: 50%;
+                }
+
+                @media screen and (max-width:1280px) {
+                    width: 100%;
+                }
+
+                #search-input {
+
+                    @media screen and (min-width:1281px) {
+                        width: 100%;
+                        min-height: 35px;
+                        max-height: 35px;
+                        background-color: #FFF;
+                        border-style: none;
+                        border-bottom: 1px solid #000;
+                        font-family: 'Open Sans', sans-serif;
+                        color: #000;
+                        font-size: 12px;
+                        background-image: url(../assets/search_FILL0_wght400_GRAD0_opsz48.svg);
+                        background-size: 5vh;
+                        background-repeat: no-repeat;
+                        background-position-x: left;
+                        background-position-y: center;
+                        padding-left: 50px;
+                        transition: all .3s;
+                    }
+
+                    @media screen and (max-width:1280px) {
+                        width: 100%;
+                        min-height: 35px;
+                        max-height: 35px;
+                        background-color: #FFF;
+                        border-style: none;
+                        border-bottom: 1px solid #000;
+                        font-family: 'Open Sans', sans-serif;
+                        color: #000;
+                        font-size: 12px;
+                        background-image: url(../assets/search_FILL0_wght400_GRAD0_opsz48.svg);
+                        background-size: 5vh;
+                        background-repeat: no-repeat;
+                        background-position-x: left;
+                        background-position-y: center;
+                        padding-left: 50px;
+                        transition: all .3s;
+                    }
+
+
+
+                    &:focus {
+                        display: block;
+                        outline: none;
+                        border-bottom: 1px solid #fc5b20;
+                    }
+                }
+            }
+
+            #desktop_options {
+                justify-content: end;
+                width: 50%;
+
+                @media screen and (min-width:1281px) {
+                    display: flex !important;
+                }
+
+                @media screen and (max-width:1280px) {
+                    display: none;
+                }
+
+                #locate {
+                    font-size: 100%;
+                    cursor: pointer;
+                }
+
+                #options {
+                    @media screen and (min-width:1281px) {
+                        display: flex !important;
+                        align-items: center;
+                    }
+
+                    @media screen and (max-width:1280px) {
+                        display: none;
+                    }
+
+                    li {
+                        display: inline-block;
+                        padding-inline: 1.1vw;
+                        font-family: 'Open Sans', sans-serif;
+                        font-weight: 600;
+                        font-size: 12px;
+                        transition: all .8s;
+
+                        a {
+                            color: #000000;
+                            text-decoration: none;
+                            transition: 0.1s;
+                            display: flex !important;
+                            align-items: center;
+
+                            &:hover {
+                                color: #000000;
+                                text-decoration: underline;
+                                transition: 0.1s;
+                            }
+                        }
+
+                        #user-options {
+                            position: absolute;
+                            display: none;
+                            background-color: #ffffff;
+                            top: 90%;
+                            right: 5px;
+                            font-size: 2vh;
+                            z-index: 1;
+
+                            a {
+                                text-decoration: none;
+                                color: #000;
+                            }
+                        }
+                    }
+
+                }
+            }
+        }
+    }
+}
+
+main {
+
+    .carousel h5 {
+        text-shadow: 2px 0 #000, -2px 0 #000, 0 2px #000, 0 -2px #000,
+            1px 1px #000, -1px -1px #000, 1px -1px #000, -1px 1px #000;
+    }
+
+    .carousel p {
+        text-shadow: 2px 0 #000, -2px 0 #000, 0 2px #000, 0 -2px #000,
+            1px 1px #000, -1px -1px #000, 1px -1px #000, -1px 1px #000;
+    }
+
+    #container {
+        width: 100%;
+        min-height: 100vh;
+        display: grid;
+        grid-gap: 0px;
+        grid-template-rows: max-content max-content max-content max-content auto max-content max-content auto max-content;
+    }
+
+    .thumbnail-container {
+        display: flex;
+        flex-wrap: wrap;
+        width: 100%;
+        justify-content: center;
+    }
+
+    .thumbnail-container-highlight {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: start;
+    }
+
+    .thumbnail-preview {
+        display: block;
+        width: 300px;
+        height: 400px;
+        margin-top: 20px;
+        align-items: center;
+        justify-content: center;
+        padding: 20px;
+    }
+
+    #card {
+        max-width: 300px;
+        max-height: 300px;
+    }
+
+    #userCard {
+        max-width: 500px;
+        max-height: 500px;
+    }
+
+    @media only screen and (min-width: 851px) {
+        main {
+            grid-column: 2;
+            grid-row: 5;
+            margin-bottom: 20px;
+        }
+    }
+
+    @media only screen and (min-width: 600px) {
+
+        .card-body {
+            margin-left: 3vw;
+        }
+    }
+}
