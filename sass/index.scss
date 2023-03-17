@@ -43,14 +43,11 @@ body {
                 
                 a {
                     text-decoration: none;
-
-                    &:hover {
-                        opacity: 50%;
-                    }
                 }
             }
 
             #ul-button {
+                cursor: pointer;
                 @media screen and (min-width:1281px) {
                     display: none;
                 }

@@ -29,9 +29,9 @@ if (isset($_SESSION["id"])) {
     //Setar icone de usuário não logado
     $ImgPerfil = '<a href="login.php"><img src="assets/user-128.svg" style="height:3vw"></a>';
     //Opções para usuário não logado
-    $list ="<ul class='list-group'>
-                <a href='index.php?list'><li class='list-group-item'>Ver eventos</li></a>
-                <a href='upload.php'><li class='list-group-item'>Divulgar meu Evento</li></a>
+    $list ="<ul id=" . "options-mobile" . " class='list-group'>
+                <a href='index.php?list'><li class='list-group-item d-flex'><span class='pe-2 material-symbols-outlined'>event</span>Ver eventos</li></a>
+                <a href='upload.php'><li class='list-group-item d-flex'><span class='pe-2 material-symbols-outlined'>add_box</span>Divulgar meu Evento</li></a>
             </ul>";
 }
 
@@ -277,7 +277,7 @@ $display = new Display();
         </a>
 
         <!--Barra Cinza-->
-        <div class="container-fluid mt-3 mb-3" style="height:5vw;background-color:#dbdbdb"></div>
+        <div class="container-fluid mt-3" style="height:5vw;background-color:#dbdbdb"></div>
 
     <?php
     }

@@ -229,67 +229,80 @@
         //Setar Foto de Usuario Não Logado
         $ImgPerfil = '<a href="login.php"><img src="assets/user-128.svg" style="height:3vw"></a>';
         //Setar Opções de Usuario Não Logado
-        $list =
-            "<ul class='list-group'>
-                <a href='index.php?list'><li class='list-group-item'>Ver eventos</li></a>
-                <a href='upload.php'><li class='list-group-item'>Divulgar meu Evento</li></a>
-            </ul>";
+        $list ="<ul id=" . "options-mobile" . " class='list-group'>
+                    <a href='index.php?list'><li class='list-group-item d-flex'><span class='pe-2 material-symbols-outlined'>event</span>Ver eventos</li></a>
+                    <a href='upload.php'><li class='list-group-item d-flex'><span class='pe-2 material-symbols-outlined'>add_box</span>Divulgar meu Evento</li></a>
+                </ul>";
     ?>
     <!--Cabeçalho-->
     <header>
-        
+
         <!--Container-->
-        <div class="navbar navbar-expand-lg navbar-light bg-white w-95 m-0 mx-auto"> 
-            
+        <nav class="navbar navbar-expand-lg navbar-light bg-white w-95 m-0 mx-auto">
+
             <!--Logo-->
-            <a href="index.php" class="navbar-brand p-0 m-0"><img src="assets/logo-transparente.png" alt="logo" style="width:12vw; min-width:150px"></a>
-            
-            <!--Barra de Pesquisa Desktop-->
-            <form id="form_desktop" class="align-items-center w-50 p-0 m-0">
-                <input type="text" name="" class="mx-auto" id="search_bar_desktop" placeholder="Procurar eventos">
-                <span class="bar"></span>
+            <a href="index.php" class="navbar-brand p-0 m-0">
+                <div class="hover">
+                    <figure>
+                        <img src="assets/logo-transparente.png" alt="logo" id="logo">
+                    </figure>
+                </div>
+            </a>
+
+            <!--Barra de Pesquisa-->
+            <form id="form">
+                <input type="text" name="q" id="search-input" placeholder="Procurar eventos">
             </form>
 
-            <!--Botoes Mobile-->
-            <div id="mobile" class="w-25 justify-content-end pe-3">
-                <img id="search" src="./assets/search_FILL0_wght400_GRAD0_opsz48.svg">
-                <img id="options" src="./assets/menu.svg" width="24px">
-                <?php echo $list ?>
-            </div>
-            <!--Botoes Mobile-->
+            <!--Opcoes Mobile-->
+            <img id="ul-button" src="./assets/menu.svg">
+            <?php echo $list ?>
 
-            <!--Opcoes Desktop-->
-            <div id="options_desktop" class="w-50" style="height:6vw">
-                <!--UL da opções-->
-                <ul class="h-100 p-0 m-0 align-items-center justify-content-end d-flex w-100">
-                    <!--Select com Localizações-->
+            <!--Opcoes-->
+            <div id="desktop_options">
+
+                <ul id="options" class="m-0 float-end">
+
                     <li>
-                        <select id="localizacao" class="form-select border-0" aria-label="Default select example">
+                        <select id="locate" class="form-select border-0" aria-label="Default select example">
                             <option selected>Pará de Minas</option>
                         </select>
                     </li>
-                    <li><a href="index.php?list">Ver eventos</a></li>
-                    <li><a href="upload.php">Divulgar meu Evento</a></li>
-                    <li><?php echo $ImgPerfil ?></li> <!--Foto de Perfil-->
 
-                    <!--UL de Opções de Usuário Logado Mobile-->
-                    <ul id="userUl" class="list-group">
-                        <a href="user.php?perfil" class="text-decoration-none text-black">
-                            <li class="list-group-item">Configurações</li>
+                    <li>
+                        <a href="index.php?list">
+                            <span class="material-symbols-outlined">event</span>
+                            Ver eventos
                         </a>
-                        <a href="php/logout.inc.php" class="text-decoration-none text-black">
-                            <li class="list-group-item">Sair</li>
+                    </li>
+
+                    <li>
+                        <a href="upload.php">
+                            <span class="material-symbols-outlined">add_box</span>
+                            Divulgar meu Evento
                         </a>
-                    </ul> <!--UL de Opções de Usuário Logado Mobile-->
-                </ul> <!--UL da opções-->
-            </div> <!--Opcoes Desktop-->
-        </div> <!--Container-->
-        
-        <!--Barra Pesquisa Mobile-->
-        <form id="form_mobile" class="form-inline">
-            <input type="text" name="" id="mobile_search_bar" placeholder="Pesquisar eventos">
-            <img src="assets/close_FILL0_wght400_GRAD0_opsz20.svg" id="close" alt="close" style="cursor:pointer">
-        </form>
+                    </li>
+
+                    <li>
+                        <?php echo $ImgPerfil ?>
+                        <!-- Opções do Usuário -->
+                        <ul id="user-options" class="list-group">
+                            <a href="user.php?perfil">
+                                <li class="list-group-item w-100 d-flex align-itens-center">
+                                    <span class="pe-2 material-symbols-outlined">settings</span>Configurações
+                                </li>
+                            </a>
+                            <a href="php/logout.inc.php">
+                                <li class="list-group-item w-100 d-flex align-itens-center">
+                                    <span class="pe-2 material-symbols-outlined">logout</span>
+                                    Sair
+                                </li>
+                            </a>
+                        </ul>
+                    </li>
+                </ul>
+            </div>
+        </nav>
 
     </header>
     
@@ -303,7 +316,7 @@
     <?php
         }
     ?>
-    
+
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
     <script src="./scripts/scripts.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js" integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN" crossorigin="anonymous"></script>

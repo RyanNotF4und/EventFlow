@@ -44,7 +44,7 @@
 
 </head>
 
-<body style="max-height:100vh">
+<body style="height:100vh">
     <section class="h-100">
         <div class="container-fluid h-100">
             <div class="row d-flex justify-content-center align-items-center h-100">
