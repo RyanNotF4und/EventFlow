@@ -55,6 +55,9 @@
     
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
     <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@40,300,0,0" />
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@40,300,0,0" />
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@40,300,0,0" />
     <link rel="stylesheet" href="css/index.css">
     <link rel="stylesheet" href="css/logo-shine.css">
     <link rel="stylesheet" href="css/button-details.css">
@@ -97,17 +100,17 @@
                             <option selected>Pará de Minas</option>
                         </select>
                     </li>
-                    <li><a href="index.php?list">Ver eventos</a></li>
-                    <li><a href="upload.php">Divulgar meu Evento</a></li>
+                    <li><a href="index.php?list" class="d-flex align-itens-center"><span class="material-symbols-outlined">event</span>Ver eventos</a></li>
+                    <li><a href="upload.php" class="d-flex align-itens-center"><span class="material-symbols-outlined">add_box</span>Divulgar meu Evento</a></li>
                     <li><?php echo $ImgPerfil ?></li> <!--Foto de Perfil-->
 
                     <!--UL de Opções de Usuário Logado Mobile-->
                     <ul id="userUl" class="list-group">
                         <a href="user.php?perfil" class="text-decoration-none text-black">
-                            <li class="list-group-item">Configurações</li>
+                            <li class="list-group-item w-100 d-flex align-itens-center"><span class="pe-2 material-symbols-outlined">settings</span>Configurações </li>
                         </a>
                         <a href="php/logout.inc.php" class="text-decoration-none text-black">
-                            <li class="list-group-item">Sair</li>
+                            <li class="list-group-item w-100 d-flex align-itens-center"><span class="pe-2 material-symbols-outlined">logout</span>Sair</li>
                         </a>
                     </ul> <!--UL de Opções de Usuário Logado Mobile-->
                 </ul> <!--UL da opções-->
