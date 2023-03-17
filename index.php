@@ -22,6 +22,7 @@ if (isset($_SESSION["id"])) {
                 <li class='list-group-item'><img src=" . "assets/coin-svgrepo-com.svg" . " class='ps-1 pe-2' style='height:3vh;'>0</li>
                 <a href='index.php?list'><li class='list-group-item d-flex'><span class='pe-2 material-symbols-outlined'>event</span>Ver eventos</li></a>
                 <a href='upload.php'><li class='list-group-item d-flex'><span class='pe-2 material-symbols-outlined'>add_box</span>Divulgar meu Evento</li></a>
+                <a href='user.php?perfil'><li class='list-group-item d-flex'><span class='pe-2 material-symbols-outlined'>monetization_on</span>Trocar coins</li></a>
                 <a href='user.php?perfil'><li class='list-group-item d-flex'><span class='pe-2 material-symbols-outlined'>settings</span>Configurações</li></a>
                 <a href='php/logout.inc.php' class='text-decoration-none text-black'><li class='list-group-item d-flex'><span class='pe-2 material-symbols-outlined'>logout</span>Sair</li></a>
             </ul>";
@@ -114,13 +115,20 @@ $display = new Display();
                         <ul id="user-options" class="list-group">
                             <a href="user.php?perfil">
                                 <li class="list-group-item w-100 d-flex align-itens-center">
-                                    <span class="pe-2 material-symbols-outlined">settings</span>Configurações
+                                    <span class="pe-2 material-symbols-outlined">settings</span>
+                                    <p class="m-0 p-0 d-flex align-items-center">Configurações</p> 
+                                </li>
+                            </a>
+                            <a href="shop.php">
+                                <li class="list-group-item w-100 d-flex align-itens-center">
+                                    <span class="pe-2 material-symbols-outlined">monetization_on</span>
+                                    <p class="m-0 p-0 d-flex align-items-center">Trocar moedas</p> 
                                 </li>
                             </a>
                             <a href="php/logout.inc.php">
                                 <li class="list-group-item w-100 d-flex align-itens-center">
                                     <span class="pe-2 material-symbols-outlined">logout</span>
-                                    Sair
+                                    <p class="m-0 p-0 d-flex align-items-center">Sair</p> 
                                 </li>
                             </a>
                         </ul>
@@ -172,7 +180,6 @@ $display = new Display();
                     if ($event) {
                         foreach ($event as $data) {
                     ?>
-
                             <article class="thumbnail-preview ms-2 me-2">
                                 <h3 class="fw-bold text-center"><?php echo $data['title'] ?></h3>
                                 <div id="card" class="rounded" style="background: url(<?php echo $data['thumb_path'] ?>) no-repeat center;background-size:cover;height:200px"></div>
@@ -183,7 +190,11 @@ $display = new Display();
                             </a>
                     <?php
                         } //Foreach
-                    } //If
+                    } else {
+                        ?>
+                        <h1 class="mt-5">Nenhum evento encontrado! :(</h1>
+                        <?php
+                    }
                     ?>
                 </div> <!--Thumbnail Container-->
             </main>

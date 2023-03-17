@@ -73,4 +73,19 @@ class Select extends db
             return false;
         }
     }
+
+    public function deleteEvent($user_id) {
+        $event_id = $_GET['delete'];
+        $result = $this->connect()->query("SELECT * FROM events WHERE user_id = '$user_id' AND id = '$event_id'");
+        $archive = $result->fetch_assoc();
+        if($result->num_rows > 0) {
+            $delete = $this->connect()->query("DELETE FROM events WHERE user_id = '$user_id' AND id = '$event_id'");
+            unlink($archive['thumb_path']);
+            if ($delete) {
+                header("user.php?myevents");
+            }
+        } else {
+            return false;
+        }
+    }
 }

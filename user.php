@@ -1,4 +1,5 @@
 <?php
+
     include("php/db.inc.php");
     include("php/events.inc.php");
     include("php/display.inc.php");
@@ -23,6 +24,7 @@
                     <a href='index.php?list'><li class='list-group-item d-flex'><span class='pe-2 material-symbols-outlined'>event</span>Ver eventos</li></a>
                     <a href='upload.php'><li class='list-group-item d-flex'><span class='pe-2 material-symbols-outlined'>add_box</span>Divulgar meu Evento</li></a>
                     <a href='user.php?perfil'><li class='list-group-item d-flex'><span class='pe-2 material-symbols-outlined'>settings</span>Configurações</li></a>
+                    <a href='user.php?perfil'><li class='list-group-item d-flex'><span class='pe-2 material-symbols-outlined'>settings</span>Configurações</li></a>
                     <a href='php/logout.inc.php' class='text-decoration-none text-black'><li class='list-group-item d-flex'><span class='pe-2 material-symbols-outlined'>logout</span>Sair</li></a>
                 </ul>";
     } else {
@@ -37,6 +39,10 @@
 
     $events = new Events();
     $display = new Display();
+
+    if (isset($_GET['delete'])){
+        $delete = $select->deleteEvent($_SESSION['id']);
+    }
 ?>
 <!DOCTYPE html>
 <html lang="pt-br">
@@ -54,7 +60,7 @@
     <link rel="stylesheet" href="css/button-edit.css">
     <link rel="stylesheet" href="css/logo-shine.css">
     <link rel="icon" href="assets/favicon.png">
-    <title>Event Flow | Usuário</title>
+    <title>Event Flow | Perfil</title>
 </head>
 
 <style>
@@ -124,13 +130,20 @@
                         <ul id="user-options" class="list-group">
                             <a href="user.php?perfil">
                                 <li class="list-group-item w-100 d-flex align-itens-center">
-                                    <span class="pe-2 material-symbols-outlined">settings</span>Configurações
+                                    <span class="pe-2 material-symbols-outlined">settings</span>
+                                    <p class="m-0 p-0 d-flex align-items-center">Configurações</p> 
+                                </li>
+                            </a>
+                            <a href="shop.php">
+                                <li class="list-group-item w-100 d-flex align-itens-center">
+                                    <span class="pe-2 material-symbols-outlined">monetization_on</span>
+                                    <p class="m-0 p-0 d-flex align-items-center">Trocar moedas</p> 
                                 </li>
                             </a>
                             <a href="php/logout.inc.php">
                                 <li class="list-group-item w-100 d-flex align-itens-center">
                                     <span class="pe-2 material-symbols-outlined">logout</span>
-                                    Sair
+                                    <p class="m-0 p-0 d-flex align-items-center">Sair</p> 
                                 </li>
                             </a>
                         </ul>
@@ -171,16 +184,19 @@
                             </div>
                             <div>
                                 <a class="text-decoration-none" href="?edit=<?php echo $data['id'] ?>"><div class="edit noselect m-1"><span class="text">Editar</span><span class="icon"><svg fill="#000000" width="32px" height="32px" viewBox="0 0 512 512" xmlns="http://www.w3.org/2000/svg" ><title>edit</title><path d="M320 112L368 64 448 144 400 192 320 112ZM128 304L288 144 368 224 208 384 128 304ZM96 336L176 416 64 448 96 336Z" /></svg></span></div>
-                                <a class="text-decoration-none" href="?delet=<?php echo $data['id'] ?>"><div class="cancel noselect m-1"><span class="text">Deletar</span><span class="icon"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M24 20.188l-8.315-8.209 8.2-8.282-3.697-3.697-8.212 8.318-8.31-8.203-3.666 3.666 8.321 8.24-8.206 8.313 3.666 3.666 8.237-8.318 8.285 8.203z"></path></svg></span></div></a>
+                                <a class="text-decoration-none" href="?myevents&delete=<?php echo $data['id'] ?>"><div class="cancel noselect m-1"><span class="text">Deletar</span><span class="icon"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M24 20.188l-8.315-8.209 8.2-8.282-3.697-3.697-8.212 8.318-8.31-8.203-3.666 3.666 8.321 8.24-8.206 8.313 3.666 3.666 8.237-8.318 8.285 8.203z"></path></svg></span></div></a>
                             </div>
                         </article>
                 <?php
                     }
+                } else {
+                    ?>
+                    <h4 class="ms-4">Você não divulgou nenhum evento, divulgue <a href="upload.php">aqui.</a></h4>
+                    <?php
                 }
                 ?>
             </div>
         </main>
-        </div>
     <?php
     } else if (isset($_GET['perfil'])) {
     ?>

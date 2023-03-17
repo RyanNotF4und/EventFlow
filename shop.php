@@ -75,7 +75,7 @@
                         <li class='list-group-item'><img src=" . "assets/coin-svgrepo-com.svg" . " class='ps-1 pe-2' style='height:3vh;'>0</li>
                         <a href='index.php?list'><li class='list-group-item d-flex'><span class='pe-2 material-symbols-outlined'>event</span>Ver eventos</li></a>
                         <a href='upload.php'><li class='list-group-item d-flex'><span class='pe-2 material-symbols-outlined'>add_box</span>Divulgar meu Evento</li></a>
-                        <a href='user.php?perfil'><li class='list-group-item d-flex'><span class='pe-2 material-symbols-outlined'>monetization_on</span>Trocar coins</li></a>
+                        <a href='user.php?perfil'><li class='list-group-item d-flex'><span class='pe-2 material-symbols-outlined'>shop</span>Trocar coins</li></a>
                         <a href='user.php?perfil'><li class='list-group-item d-flex'><span class='pe-2 material-symbols-outlined'>settings</span>Configurações</li></a>
                         <a href='php/logout.inc.php' class='text-decoration-none text-black'><li class='list-group-item d-flex'><span class='pe-2 material-symbols-outlined'>logout</span>Sair</li></a>
                     </ul>";
@@ -160,77 +160,40 @@
     </header>
     
     <section class="p-5">
-        <h1 style="width:100%;font-weight:bolder">Divulgar um evento</h1>
-        <p>Com a Event Flow é extremamente simples criar e divulgar seus eventos !<br>Preencha o que se pede e seu evento estará visivel para milhares de pessoas !</p>
-        <span class="text-warning">*Será feito uma verificação antes de ser lançado*</span>
-        <span class='text-warning'><?php if (isset($_SESSION['msg'])) {echo $_SESSION['msg'];unset($_SESSION['msg']);} else {echo @$upload_event->error;} ?></span>
-        <hr>
+        <h1 class="fw-bold">Loja</h1>
+        <p class="mt-3 mb-0">Aqui você pode trocar suas moedas por cupons de descontos e outros produtos. <a href="about.php">Saiba mais.</a></p>
 
-        <form id="form" class="w-100" method="POST" enctype="multipart/form-data">
-            <div class="file-div mx-auto mb-5">
-
-                <span class="form-title">Escolha a capa do seu Evento</span>
-                <p class="form-paragraph">
-                    PNG, JPEG ou JPG
-                </p>
-                <label for="file-input" class="drop-container">
-                <span class="drop-title">Arraste a imagem</span>
-                ou
-                <input type="file" accept="image/*" name="image" id="file-input" required>
-                </label>
-            </div>
-
-            <div class="inputGroup mx-auto">
-                <div>
-                    <input type="text" name="title" id="Titulo" required>
-                    <label for="Titulo">Titulo do Evento</label>
-                </div>
-                <div class="mt-4">
-                    <input type="text" name="adress" id="Endereco" required>
-                    <label for="Endereco">Endereço</label>
-                </div>
-                <div class="mt-4">
-                    <input type="text" name="description" id="Descricao" class="pt-5 pb-5" required>
-                    <label for="Descricao">Descrição</label>
-                </div>
-            </div>
-
-            <div class="inputGroup mx-auto" style="width:350px">
-                <div class="d-flex mt-2">
-                    <span class="d-flex align-items-center">Estado:</span>
-                    <select class="form-select form-control-lg ms-3" name="state" id="">
-                        <option value="MG">MG</option>
-                    </select>
-                </div>
-                <div class="d-flex mt-4">
-                    <span class="d-flex align-items-center">Cidade:</span>
-                    <select class="form-select form-control-lg ms-3" name="city" id="">
-                        <option value="Pará de Minas">Pará de Minas</option>
-                    </select>
-                </div>
-                <div class="d-flex mt-4">
-                    <span class="d-flex align-items-center">Data do Evento:</span>
-                    <input class="form-control form-control-lg w-50 ms-3" type="date" name="date_event" required />
-                    
-                </div>
-                <div class="d-flex justify-content-center mt-2">
-                    <span class="ms-5">Até:</span>
-                </div>
-                <div class="d-flex justify-content-end mt-2">
-                    <input class="form-control form-control-lg w-50 me-5" type="date" name="final_date_event" required />
-                </div>
-                <div class="d-flex mt-2">
-                    <button type="submit" name="upload" class="submit m-1"><span class="text">Enviar</span><span class="icon"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M20.285 2l-11.285 11.567-5.286-5.011-3.714 3.716 9 8.728 15-15.285z"/></svg></span></button>
-                    <a href="index.php" class="text-decoration-none"><div class="cancel noselect m-1"><span class="text">Cancelar</span><span class="icon"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M24 20.188l-8.315-8.209 8.2-8.282-3.697-3.697-8.212 8.318-8.31-8.203-3.666 3.666 8.321 8.24-8.206 8.313 3.666 3.666 8.237-8.318 8.285 8.203z"></path></svg></span></div></a>
-                </div>
-            </div>
-        </form>
-
-
-
-
-        
-        <hr>
+        <div id="container">
+            <main>
+                <div class="thumbnail-container">
+                    <article class="thumbnail-preview ms-2 me-2 border border-black rounded h-100 text-center">
+                        <h4 class="fw-bold">Produto 1</h4>
+                        <p><img src="assets/coin-svgrepo-com.svg" width="20" alt="">: 0</p>
+                        <button type="submit" name="upload" class="submit mx-auto"><span class="text">Resgatar</span><span class="icon"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M20.285 2l-11.285 11.567-5.286-5.011-3.714 3.716 9 8.728 15-15.285z"/></svg></span></button>
+                    </article>
+                    <article class="thumbnail-preview ms-2 me-2 border border-black rounded h-100 text-center">
+                        <h4 class="fw-bold">Produto 2</h4>
+                        <p><img src="assets/coin-svgrepo-com.svg" width="20" alt="">: 0</p>
+                        <button type="submit" name="upload" class="submit mx-auto"><span class="text">Resgatar</span><span class="icon"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M20.285 2l-11.285 11.567-5.286-5.011-3.714 3.716 9 8.728 15-15.285z"/></svg></span></button>
+                    </article>
+                    <article class="thumbnail-preview ms-2 me-2 border border-black rounded h-100 text-center">
+                        <h4 class="fw-bold">Produto 3</h4>
+                        <p><img src="assets/coin-svgrepo-com.svg" width="20" alt="">: 0</p>
+                        <button type="submit" name="upload" class="submit mx-auto"><span class="text">Resgatar</span><span class="icon"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M20.285 2l-11.285 11.567-5.286-5.011-3.714 3.716 9 8.728 15-15.285z"/></svg></span></button>
+                    </article>
+                    <article class="thumbnail-preview ms-2 me-2 border border-black rounded h-100 text-center">
+                        <h4 class="fw-bold">Produto 4</h4>
+                        <p><img src="assets/coin-svgrepo-com.svg" width="20" alt="">: 0</p>
+                        <button type="submit" name="upload" class="submit mx-auto"><span class="text">Resgatar</span><span class="icon"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M20.285 2l-11.285 11.567-5.286-5.011-3.714 3.716 9 8.728 15-15.285z"/></svg></span></button>
+                    </article>
+                    <article class="thumbnail-preview ms-2 me-2 border border-black rounded h-100 text-center">
+                        <h4 class="fw-bold">Produto 5</h4>
+                        <p><img src="assets/coin-svgrepo-com.svg" width="20" alt="">: 0</p>
+                        <button type="submit" name="upload" class="submit mx-auto"><span class="text">Resgatar</span><span class="icon"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M20.285 2l-11.285 11.567-5.286-5.011-3.714 3.716 9 8.728 15-15.285z"/></svg></span></button>
+                    </article>
+                </div> <!--Thumbnail Container-->
+            </main>
+        </div> <!--Container-->
     </section>
     <?php
     } else { //Caso o Usuário não esteja logado
@@ -297,13 +260,14 @@
                         <ul id="user-options" class="list-group">
                             <a href="user.php?perfil">
                                 <li class="list-group-item w-100 d-flex align-itens-center">
-                                    <span class="pe-2 material-symbols-outlined">settings</span>Configurações
+                                    <span class="pe-2 material-symbols-outlined">settings</span>
+                                    <p class="m-0 p-0 d-flex align-items-center">Configurações</p> 
                                 </li>
                             </a>
                             <a href="php/logout.inc.php">
                                 <li class="list-group-item w-100 d-flex align-itens-center">
                                     <span class="pe-2 material-symbols-outlined">logout</span>
-                                    Sair
+                                    <p class="m-0 p-0 d-flex align-items-center">Sair</p> 
                                 </li>
                             </a>
                         </ul>
